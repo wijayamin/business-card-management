@@ -1,0 +1,214 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="res/css/bootstrap.css">
+        <link href="res/css/main.css" rel="stylesheet" type="text/css">
+        <link href="res/css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <div class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header" style="width:10%;">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand"><img height="20" alt="Brand" src="res/img/LOGO%20PAL%20INDONESIA.png"></a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar-ex-collapse">
+                    <ul class="nav navbar-nav navbar-right" style="width:20%;">
+                        <li style="padding-top:10px;">
+                            <img src="res/img/profile/no-photo.png" width="30" height="30">
+                        </li>
+                        <li class="active">
+                            <a href="#">Akun</a>
+                        </li>
+                        <li>
+                            <a href="#">Logout</a>
+                        </li>
+                    </ul>
+                    <form class="navbar-form" role="search">
+                        <div class="form-group" style="display: inline-table;width:70%;">
+                            <div class="input-group" style="width:100%;">
+                                <input type="text" class="form-control no-radius" placeholder="Pencarian Kartu Nama">
+                                <span class="input-group-addon top-bars btn-default" style="padding:0;">
+                                    <input type="submit" class="btn btn-xs btn-link" id="inputEmail3" value="Cari" style="width:100%;margin:0; color:#000;">
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="section first">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="section thick"  data-spy="affix" data-offset-top="50">
+                            <div class="box box-sidebar hidden-sm hidden-xs row" >
+                                <div class="col-xs-12  text-center" style="background-color: #f7f7f7; padding-top:20px;">
+                                    <img src="res/img/profile/no-photo.png" style="max-width:50%;width:50%;height:auto;">                                    
+                                    <h3>Supper Admin</h3>
+                                    <h5><strong>Administrator</strong></h5>
+                                </div>
+                                <hr>
+                                <div class="col-sm-12">
+                                    <ul class="list-group">
+                                        <li class="list-group-item ">
+                                            <span class="badge">14</span>
+                                            Kartu Nama
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="badge">2</span>
+                                            Pengguna
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="badge">1</span>
+                                            Grup
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="badge">1</span>
+                                            Pesan
+                                        </li>
+                                        <li class="list-group-item active"  role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="true" aria-controls="collapseExample">
+                                            <span class="badge"></span>
+                                            Pengaturan
+                                        </li>
+                                        <ul class="list-group collapse in" id="collapseExample">
+                                            <li class="list-group-item">
+                                                Pengaturan Pendaftaran
+                                            </li>
+                                            <li class="list-group-item">
+                                                Pengaturan Email
+                                            </li>
+                                            <li class="list-group-item active">
+                                                Pengaturan SMTP
+                                            </li>
+                                            <li class="list-group-item">
+                                                Bantuan
+                                            </li>
+                                            <li class="list-group-item">
+                                                Tentang Aplikasi
+                                            </li>
+                                        </ul>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="section thick">
+                            <div class="row box box-cards">
+                                <div class="col-md-8">
+                                    <form class="form-horizontal">
+                                        <fieldset>
+                                            <legend>Pengaturan Server Email SMTP</legend>
+                                            <div class="form-group">
+                                                <label for="inputEmail" class="col-lg-4 control-label">SMTP Server</label>
+                                                <div class="col-lg-8">
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputEmail" class="col-lg-4 control-label">SMTP Server 2(Backup)</label>
+                                                <div class="col-lg-8">
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputEmail" class="col-lg-4 control-label">SMTP Port</label>
+                                                <div class="col-lg-8">
+                                                    <input type="number" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputEmail" class="col-lg-4 control-label">SMTP Username</label>
+                                                <div class="col-lg-8">
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputEmail" class="col-lg-4 control-label">SMTP Password</label>
+                                                <div class="col-lg-8">
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputEmail" class="col-lg-4 control-label">Email Pengirim</label>
+                                                <div class="col-lg-8">
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                                <div class="col-md-8 col-md-offset-4">
+                                                    <small>Alamat email untuk mengirim pesan contoh : no-reply@example.com</small>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputEmail" class="col-lg-4 control-label">Nama Email Pengirim</label>
+                                                <div class="col-lg-8">
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-lg-4 col-lg-offset-4">
+                                                    <button type="submit" class="form-control btn btn-primary" >Simpan Pengaturan</button>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <button type="submit" class="form-control btn btn-success" >Test Koneksi</button>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </form>
+                                </div>
+                                <div class="col-md-4">
+                                    <p>Pengaturan Server Email SMTP</p>
+                                    <p>Pengaturan ini mengatur koneksi dengan server email.</p>
+                                    <ul>
+                                        <li>
+                                            <p><strong>SMTP Server</strong> : Alamat Server Email, bisa berupa Domain ataupun IP Address</p>
+                                        </li>
+                                        <li>
+                                            <p><strong>SMTP Server</strong> : Tambahkan Jika memiliki lebih dari satu server email, berguna sebagai backup ketika server utama tidak ada respon</p>
+                                        </li>
+                                        <li>
+                                            <p><strong>SMTP Port</strong> : Port Server SMTP</p>
+                                        </li>
+                                        <li>
+                                            <p><strong>SMTP Username</strong> : Username akses server SMTP</p>
+                                        </li>
+                                        <li>
+                                            <p><strong>SMTP Username</strong> : Password akses server SMTP</p>
+                                        </li>
+                                        <li>
+                                            <p><strong>Email Pengirim</strong> : Alamat email sebagai pengirim pesan <span class="text-muted">Contoh : no-reply@example.com</span> maka penerima akan menerima email yang berasal dari <span class="text-muted">no-reply@example.com</span></p>
+                                        </li>
+                                        <li>
+                                            <p><strong>Nama Pengirim</strong> : Nama email sebagai pengirim pesan <span class="text-muted">Contoh : NO-REPLY</span> maka penerima akan menerima email yang berasal dari <span class="text-muted">no-reply@example.com</span> dengan nama <span class="text-muted">no-reply@example.com</span></p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!--[if lt IE 9]>
+        <script type="text/javascript" src="res/js/html5shiv.js"></script>
+        <script src="res/js/respond.js"></script>
+        <![endif]-->
+        <script type="text/javascript" src="res/js/jquery.min.js"></script>
+        <script type="text/javascript" src="res/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="res/js/mustache.min.js"></script>
+        <script>
+            $(function() {
+                var $affixElement = $('div[data-spy="affix"]');
+                $affixElement.width($affixElement.parent().width());
+            });
+        </script>
+    </body>
+</html>

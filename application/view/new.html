@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <base href="{{root_uri}}"><!--[if lte IE 6]></base><![endif]-->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="public/assets/css/bootstrap.css">
+        <link href="public/assets/css/main.css" rel="stylesheet" type="text/css">
+        <link href="public/assets/css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
+        <link href="public/assets/css/bootstrap-tagsinput.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <div class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header" style="width:10%;">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="{{root_path}}" class="navbar-brand"><img height="20" alt="Brand" src="public/assets/img/LOGO%20PAL%20INDONESIA.png"></a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar-ex-collapse">
+                    <ul class="nav navbar-nav navbar-right" >
+                        <li style="padding-top:10px;">
+                            <img src="public/image/profile/{{users.image}}" width="30" height="30">
+                        </li>
+                        <li class="active">
+                            <a href="#">Akun</a>
+                        </li>
+                        <li>
+                            <a href="#">Logout</a>
+                        </li>
+                    </ul>
+                    <form class="navbar-form" method="post" action="search">
+                        <div class="form-group" style="display: inline-table;width:70%;">
+                            <div class="input-group" style="width:100%;">
+                                <input type="text" class="form-control no-radius" placeholder="Pencarian Kartu Nama">
+                                <span class="input-group-addon top-bars btn-default" style="padding:0;">
+                                    <input type="submit" class="btn btn-xs btn-link" id="inputEmail3" value="Cari" style="width:100%;margin:0; color:#000;">
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="section avoid-navbar">
+            <div class="container">
+                <div class="row box">
+                    <form method="post" action="new/save" enctype="multipart/form-data">
+                    <div class="col-md-5 col-sm-5 col-xs-12">
+                        <!--[if (gte IE 9)|!(IE)]><!-->
+                        <div data-spy="affix" data-offset-top="60" style="height: 500px;margin-top:10px;">
+                            <!--<![endif]-->
+                            <!--[if lt IE 9]>
+                            <div class="col-md-5" style="height: 500px; width:450px; position: fixed; top: 12%; border: 1px solid gray;">
+                            <![endif]-->
+                            <div style="width:100%;">
+                                <legend>Kartu Nama</legend>
+                                <div id="viewer" style="width:100%; height:400px; border:10px dashed #777" class="text-center">
+                                    <h1 style="margin-top:160px; color:#777;">Tempat Kartu Nama</h1>
+                                </div>
+<!--
+                                <iframe id="viewer" width="100%" height="400" src="public/data/img007.pdf#view=fitH" seamless >
+                                    <h1>Tempat Kartu Nama</h1>
+                                </iframe>
+-->
+                                <div class="form-horizontal" style="padding-top:10px;" data-toggle="tooltip" data-placement="bottom" title="Pilih file kartu nama untuk diupload kedalam aplikasi, format yang di izinkan adalah berbentuk image(gambar) dan PDF">
+                                    <div class="form-group">
+                                        <div class="col-sm-3">
+                                            <label for="inputEmail3" class="control-label">File Kartu Nama</label>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <input type="file" name="card_image" id="pdf" class="form-control no-radius lightblack-border  form-important" onchange="loadname(this,'viewer');">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-7 col-sm-7 col-xs-12" style="padding-top:10px;">
+                        <!--[if lt IE 9]>
+                        <div class="alert alert-dismissible alert-warning" style="color:black;">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        <h4>Browser Anda Tidak Disupport !!</h4>
+                        <p>Browser anda terlalu
+                        <strong>Tua</strong>dan tidak mendukung secara maksimal fitur dari
+                        <strong>HTML5</strong>, silahkan menggunakan browser terbaru atau gunakan browser
+                        <strong>Google Chrome, Mozila Firefox, Opera atau Safari</strong>demi kemyamanan
+                        anda menggunakan aplikasi ini.</p>
+                        <p>Beberapa fitur tidak dapat ditampilkan secara maksimal jika anda tetap
+                        menggunakan browser ini</p>
+                        </div>
+                        <![endif]-->
+                        <div class="form-horizontal">
+                            <fieldset>
+                                <legend>Informasi Dasar</legend>
+                                <div class="form-group"  data-toggle="tooltip" data-placement="top" title="Masukkan nama lengkap agar memudahkan pencarian">
+                                    <div class="col-sm-3">
+                                        <label for="inputEmail3" class="control-label">Nama Lengkap</label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control no-radius lightblack-border form-important" name="card_name" placeholder="Jhon Doe" tabindex="1">
+                                    </div>
+                                </div>
+                                <div class="form-group"  data-toggle="tooltip" data-placement="top" title="Jika memiliki lebih dari satu jabatan, mohon untuk dipisah dengan koma (,)">
+                                    <div class="col-sm-3">
+                                        <label for="inputPassword3" class="control-label">Jabatan</label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input type="text" id="occupation" class="form-control no-radius lightblack-border" name="card_occupation" placeholder="Sales Marketing" tabindex="2">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-3">
+                                        <label for="inputPassword3" class="control-label">Perusahaan</label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control no-radius lightblack-border form-important" name="card_company" placeholder="PT. ABC" tabindex="3">
+                                    </div>
+                                </div>
+                                <legend>Informasi Kontak</legend>
+                                <div class="form-group"  data-toggle="tooltip" data-placement="top" title="Jika terdapat lebih dari satu nomor, mohon untuk dipisah dengan koma (,)">
+                                    <div class="col-sm-3">
+                                        <label for="inputPassword3" class="control-label">Nomor Telepon</label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control no-radius lightblack-border" name="card_phone" placeholder="0317685002" tabindex="4">
+                                    </div>
+                                </div>
+                                <div class="form-group"  data-toggle="tooltip" data-placement="top" title="Jika terdapat lebih dari satu nomor, mohon untuk dipisah dengan koma (,)">
+                                    <div class="col-sm-3">
+                                        <label for="inputPassword3" class="control-label">Nomor Hp</label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control no-radius lightblack-border" name="card_mobile" placeholder="083838685002" tabindex="5">
+                                    </div>
+                                </div>
+                                <div class="form-group"  data-toggle="tooltip" data-placement="top" title="Jika terdapat lebih dari satu nomor, mohon untuk dipisah dengan koma (,)">
+                                    <div class="col-sm-3">
+                                        <label for="inputPassword3" class="control-label">Nomor Fax</label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control no-radius lightblack-border" name="card_fax" placeholder="0317685002" tabindex="6">
+                                    </div>
+                                </div>
+                                <div class="form-group"  data-toggle="tooltip" data-placement="top" title="Jika terdapat lebih dari satu email, mohon untuk dipisah dengan koma (,)">
+                                    <div class="col-sm-3">
+                                        <label for="inputPassword3" class="control-label">Alamat Email</label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input type="text" data-role="tagsinput" class="form-control no-radius lightblack-border" name="card_email" placeholder="JhonDoe@exaple.com" tabindex="7">
+                                    </div>
+                                </div>
+                                <legend>Informasi Alamat</legend>
+                                <div class="form-group">
+                                    <div class="col-sm-3">
+                                        <label for="inputPassword3" class="control-label">Website</label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control no-radius lightblack-border" name="card_website" placeholder="www.example.com" tabindex="8">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-3">
+                                        <label for="inputPassword3" class="control-label">Alamat</label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <textarea class="form-control no-radius lightblack-border" name="card_address" placeholder="Example street 32 685240" tabindex="9"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group"  data-toggle="tooltip" data-placement="top" title="mohon untuk mengisi nama kota untuk kemudahan pencarian">
+                                    <div class="col-sm-3">
+                                        <label for="inputPassword3" class="control-label">Kota</label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control no-radius lightblack-border" name="card_city" placeholder="Surabaya" tabindex="10">
+                                    </div>
+                                </div>
+                                <div class="form-group"  data-toggle="tooltip" data-placement="top" title="mohon untuk mengisi nama negara untuk kemudahan pencarian">
+                                    <div class="col-sm-3">
+                                        <label for="inputPassword3" class="control-label">Negara</label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control no-radius lightblack-border" name="card_country" placeholder="Indonesia" tabindex="11">
+                                    </div>
+                                </div>
+                                <legend>Informasi Lain</legend>
+                                <div class="form-group"  data-toggle="tooltip" data-placement="top" title="jika ingin menambahkan lebih dari satu kategori, mohon untuk dipisah dengan koma(,)">
+                                    <div class="col-sm-3">
+                                        <label for="inputPassword3" class="control-label">Kategori</label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control no-radius lightblack-border" name="card_category" placeholder="Kenalan" tabindex="11">
+                                    </div>
+                                </div>
+                                <div class="form-group"  data-toggle="tooltip" data-placement="top" title="Catatan ini bersifat optional, hanya tampil ketika di cetak">
+                                    <div class="col-sm-3">
+                                        <label for="inputPassword3" class="control-label">Catatan</label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <textarea class="form-control no-radius lightblack-border" name="card_note" placeholder="Tulis sesuatu disini sesuai kebutuhan" tabindex="9"></textarea>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-3 col-sm-9">
+                                        <button type="submit" class="btn btn-primary">Simpan</button>
+                                        <a href="{{root_path}}" class="btn btn-default">Batal</a>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--[if lt IE 9]>
+        <script type="text/javascript" src="public/assets/js/html5shiv.js"></script>
+        <script src="public/assets/js/respond.js"></script>
+        <![endif]-->
+        <script type="text/javascript" src="public/assets/js/jquery.min.js"></script>
+        <script type="text/javascript" src="public/assets/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="public/assets/js/mustache.min.js"></script>   
+        <script type="text/javascript" src="public/assets/js/typeahead.bundle.js"></script>  
+        <script type="text/javascript" src="public/assets/js/bootstrap-tagsinput.min.js"></script>    
+        <script>
+            $(function () {
+                $('[data-toggle="tooltip"]').tooltip()
+            })
+        </script>
+        <script>
+            function loadname(img, previewName){  
+    
+                var isIE = (navigator.appName=="Microsoft Internet Explorer");  
+                var path = img.value;  
+                var ext = path.substring(path.lastIndexOf('.') + 1).toLowerCase();  
+            
+                if(ext == "pdf"){       
+                    if(isIE) {  
+                        $('#'+ previewName).replaceWith('<embed width="100%" height="400" src="'+path+'"></embed>');
+                    }else{  
+                        if (img.files[0]){  
+                            var reader = new FileReader();  
+                            reader.onload = function (e) {  
+                                $('#'+ previewName).replaceWith('<iframe width="100%" height="400" src="'+e.target.result+'"></iframe>')
+                            }
+                            reader.readAsDataURL(img.files[0]);  
+                        }  
+                    }  
+                }else if(ext == "jpeg" || ext == "jpg" ||  ext == "png" ){  
+                      
+                    if(isIE) {  
+                        $('#'+ previewName).replaceWith('<img width="100%" src="'+path+'">');
+                    }else{  
+                        if (img.files[0]){  
+                            var reader = new FileReader();  
+                            reader.onload = function (e) {  
+                                $('#'+ previewName).replaceWith('<img width="100%" src="'+e.target.result+'">');
+                            }
+                            reader.readAsDataURL(img.files[0]);  
+                        }  
+                    }  
+                }   
+            }  
+        </script>
+        <script>
+            var substringMatcher = function(strs) {
+              return function findMatches(q, cb) {
+                var matches, substringRegex;
+
+                // an array that will be populated with substring matches
+                matches = [];
+
+                // regex used to determine if a string contains the substring `q`
+                substrRegex = new RegExp(q, 'i');
+
+                // iterate through the pool of strings and for any string that
+                // contains the substring `q`, add it to the `matches` array
+                $.each(strs, function(i, str) {
+                  if (substrRegex.test(str)) {
+                    matches.push(str);
+                  }
+                });
+
+                cb(matches);
+              };
+            };
+            $(document).ready(function(){
+                $('#occupation').tagsinput({
+                  typeaheadjs: {
+                      source: substringMatcher(['Amsterdam', 'Washington', 'Sydney', 'Beijing', 'Cairo']),
+                      highlight : true
+                  }
+                });
+            })
+        </script>
+    </body>
+</html>

@@ -1,0 +1,202 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="res/css/bootstrap.css">
+        <link href="res/css/main.css" rel="stylesheet" type="text/css">
+        <link href="res/css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <div class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header" style="width:10%;">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand"><img height="20" alt="Brand" src="res/img/LOGO%20PAL%20INDONESIA.png"></a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar-ex-collapse">
+                    <ul class="nav navbar-nav navbar-right" style="width:20%;">
+                        <li style="padding-top:10px;">
+                            <img src="res/img/profile/no-photo.png" width="30" height="30">
+                        </li>
+                        <li class="active">
+                            <a href="#">Akun</a>
+                        </li>
+                        <li>
+                            <a href="#">Logout</a>
+                        </li>
+                    </ul>
+                    <form class="navbar-form" role="search">
+                        <div class="form-group" style="display: inline-table;width:70%;">
+                            <div class="input-group" style="width:100%;">
+                                <input type="text" class="form-control no-radius" placeholder="Pencarian Kartu Nama">
+                                <span class="input-group-addon top-bars btn-default" style="padding:0;">
+                                    <input type="submit" class="btn btn-xs btn-link" id="inputEmail3" value="Cari" style="width:100%;margin:0; color:#000;">
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="section first">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="section thick"  data-spy="affix" data-offset-top="50">
+                            <div class="box box-sidebar hidden-sm hidden-xs row" >
+                                <div class="col-xs-12  text-center" style="background-color: #f7f7f7; padding-top:20px;">
+                                    <img src="res/img/profile/no-photo.png" style="max-width:50%;width:50%;height:auto;">                                    
+                                    <h3>Supper Admin</h3>
+                                    <h5><strong>Administrator</strong></h5>
+                                </div>
+                                <hr>
+                                <div class="col-sm-12">
+                                    <ul class="list-group">
+                                        <li class="list-group-item ">
+                                            <span class="badge">14</span>
+                                            Kartu Nama
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="badge">2</span>
+                                            Pengguna
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="badge">1</span>
+                                            Grup
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="badge">1</span>
+                                            Pesan
+                                        </li>
+                                        <li class="list-group-item active"  role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="true" aria-controls="collapseExample">
+                                            <span class="badge"></span>
+                                            Pengaturan
+                                        </li>
+                                        <ul class="list-group collapse in" id="collapseExample">
+                                            <li class="list-group-item active">
+                                                Pengaturan Pendaftaran
+                                            </li>
+                                            <li class="list-group-item">
+                                                Pengaturan Email
+                                            </li>
+                                            <li class="list-group-item">
+                                                Pengaturan SMTP
+                                            </li>
+                                            <li class="list-group-item">
+                                                Bantuan
+                                            </li>
+                                            <li class="list-group-item">
+                                                Tentang Aplikasi
+                                            </li>
+                                        </ul>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="section thick">
+                            <div class="row box box-cards">
+                                <div class="col-md-8">
+                                    <form class="form-horizontal">
+                                        <fieldset>
+                                            <legend>Pengaturan Pendaftaran Pengguna Baru</legend>
+                                            <div class="form-group">
+                                                <label for="inputEmail" class="col-lg-4 control-label">Pendaftaran Via Email</label>
+                                                <div class="col-lg-1">
+                                                    <div class="material-switch">
+                                                        <input id="switch1" name="someSwitchOption001" type="checkbox"/>
+                                                        <label for="switch1" class="label-primary"></label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <h5 class="text-muted">Tidak Diijinkan</h5>
+                                                </div>
+                                            </div>
+                                            <div class="form-group text-muted">
+                                                <label for="inputEmail" class="col-lg-4 control-label">Pendaftaran Mandiri</label>
+                                                <div class="col-lg-1">
+                                                    <div class="material-switch">
+                                                        <input id="switch2" name="someSwitchOption001" type="checkbox" disabled/>
+                                                        <label for="switch2" class="label-primary"></label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <h5 class="text-muted">Tidak Diijinkan</h5>
+                                                </div>
+                                            </div>
+                                            <div class="form-group  text-muted">
+                                                <label for="inputEmail" class="col-lg-4 control-label">Batasi Email Pendaftar</label>
+                                                <div class="col-lg-1">
+                                                    <div class="material-switch">
+                                                        <input id="switch2" name="someSwitchOption001" type="checkbox" disabled/>
+                                                        <label for="switch2" class="label-primary"></label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <h5 class="text-muted">Tidak Diijinkan</h5>
+                                                </div>
+                                            </div>
+                                            <div class="form-group  text-muted">
+                                                <label for="inputEmail" class="col-lg-4 control-label">Batasan Domain Email</label>
+                                                <div class="col-lg-8">
+                                                    <input type="text" class="form-control" disabled>
+                                                </div>
+                                                <div class="col-md-8 col-md-offset-4">
+                                                    <small>Batasan Domain Email Pendaftar</small>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-lg-4 col-lg-offset-4">
+                                                    <button type="submit" class="form-control btn btn-primary" >Simpan Pengaturan</button>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </form>
+                                </div>
+                                <div class="col-md-4">
+                                    <p>Pengaturan Pendaftaran Pengguna Baru</p>
+                                    <p>Pengaturan ini mengatur metode penambahan pengguna aplikasi.</p>
+                                    <ul>
+                                        <li>
+                                            <p><strong>Pendaftaran Via Email</strong> : Jika diaktifkan maka user dapat menggunakan email untuk mendaftar, jika tidak diaktifkan maka pengguna hanya bisa mendaftar melalui akun yang dibuat oleh pihak admin</p>
+                                        </li>
+                                        <li>
+                                            <p><strong>Pendaftaran Mandiri</strong> : Jika diaktifkan maka user dapat mendaftar secara mandiri melalui halaman pendaftaran, jika tidak diaktifkan maka pengguna hanya bisa mendaftar melalui email undangan yang dikirim oleh admin. (Pendaftaran Via Email harus Aktif)</p>
+                                        </li>
+                                        <li>
+                                            <p><strong>Batasi Email Pendaftar</strong> : Jika diaktifkan maka user dapat mendaftar secara mandiri menggunakan email berdomain yang dibatasi pada form domain email, jika tidak diaktifkan maka pengguna dapat mendaftar dengan email berdomain apapun. (Pendaftaran Mandiri harus Aktif dan Domain email harus diinputkan pada form domain)</p>
+                                        </li>
+                                        <li>
+                                            <p><strong>Batasan Domain Email</strong> : Masukkan daftar domain yang hanya bisa mendaftar ke dalam aplikasi ini. Untuk Menambahkan Domain lebih dari satu pisahkan dengan koma (,) (Batasi Email Pendaftar harus Aktif dan Setidaknya terdapat satu domain pada form Batasan Domain Email)</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!--[if lt IE 9]>
+        <script type="text/javascript" src="res/js/html5shiv.js"></script>
+        <script src="res/js/respond.js"></script>
+        <![endif]-->
+        <script type="text/javascript" src="res/js/jquery.min.js"></script>
+        <script type="text/javascript" src="res/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="res/js/mustache.min.js"></script>
+        <script>
+            $(function() {
+                var $affixElement = $('div[data-spy="affix"]');
+                $affixElement.width($affixElement.parent().width());
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <base href="{{root_uri}}"><!--[if lte IE 6]></base><![endif]-->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="public/assets/css/bootstrap.css">
+        <link href="public/assets/css/main.css" rel="stylesheet" type="text/css">
+        <link href="public/assets/css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <div class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand">
+                        <img height="20" alt="Brand" src="public/assets/img/LOGO%20PAL%20INDONESIA.png">
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar-ex-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="active">
+                            <a href="#">Bantuan</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="section" style="padding-top:80px">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2 col-login">
+                        <h1 class="text-center">LOGIN</h1>
+                        <h5 class="text-center">Selamat datang di Aplikasi Manajemen Kartu Nama.</h5>
+                        <h5 class="text-center">Silahkan login menggunakan form dibawah</h5>
+                        <hr>
+                        {{# error}}
+                        <div class="alert alert-dismissible alert-danger">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            Username Dan Password yang anda gunakan salah atau tidak tercatat dalam aplikasi
+                        </div>
+                        {{/ error}}
+                        <form class="form-horizontal" method="post" action="dologin">
+                            <div class="form-group has-feedback">
+                                <div class="col-sm-3">
+                                    <label for="inputEmail3" class="control-label">Username</label>
+                                </div>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="username" placeholder="Username atau Email" tabindex="1" autofocus>
+                                </div>
+                                <div class="col-sm-offset-3 col-sm-9">
+                                    <p class="help-block"><small>Anda bisa menggunakan email untuk masuk</small></p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-3">
+                                    <label for="inputPassword3" class="control-label">Password</label>
+                                </div>
+                                <div class="col-sm-9">
+                                    <input type="password" class="form-control" name="password" placeholder="Password" tabindex="2">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-3 col-sm-9 text-center">
+                                    <button type="submit" class="btn btn-block btn-primary" tabindex="3">Masuk</button>
+                                    {{# register?}}
+                                    <small class="text-muted">Belum Punya Akun?</small>
+                                    <a href="register" type="submit" class="btn btn-block btn-success" tabindex="4">Daftar</a>
+                                    {{/ register?}}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-12 text-right">
+                                    <a href="{{forgot_uri}}" class="text-success" tabindex="5">Lupa Kata Sandi ?</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <!--[if lt IE 9]>
+        <script type="text/javascript" src="public/assets/js/html5shiv.js"></script>
+        <script src="public/assets/js/respond.js"></script>
+        <![endif]-->
+        <script type="text/javascript" src="public/assets/js/jquery.min.js"></script>
+        <script type="text/javascript" src="public/assets/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="public/assets/js/mustache.min.js"></script>   
+    </body>
+</html>

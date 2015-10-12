@@ -1,0 +1,170 @@
+.form-group input[type="checkbox"] {
+    display: none;
+}
+
+.form-group input[type="checkbox"] + .btn-group > label span {
+    width: 30px;
+}
+
+.form-group input[type="checkbox"] + .btn-group > label span:first-child {
+    display: none;
+}
+.form-group input[type="checkbox"] + .btn-group > label span:last-child {
+    display: inline-block;   
+}
+
+.form-group input[type="checkbox"]:checked + .btn-group > label span:first-child {
+    display: inline-block;
+}
+.form-group input[type="checkbox"]:checked + .btn-group > label span:last-child {
+    display: none;   
+}
+
+.material-switch > input[type="checkbox"] {
+    display: none;   
+}
+
+.material-switch > label {
+    cursor: pointer;
+    height: 0px;
+    position: relative; 
+    width: 40px;  
+}
+
+.material-switch > label::before {
+    background: rgb(0, 0, 0);
+    box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    content: '';
+    height: 16px;
+    margin-top: -8px;
+    position:absolute;
+    opacity: 0.3;
+    transition: all 0.4s ease-in-out;
+    width: 40px;
+}
+.material-switch > label::after {
+    background: rgb(255, 255, 255);
+    border-radius: 16px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+    content: '';
+    height: 24px;
+    left: -4px;
+    margin-top: -8px;
+    position: absolute;
+    top: -4px;
+    transition: all 0.3s ease-in-out;
+    width: 24px;
+}
+.material-switch > input[type="checkbox"]:checked + label::before {
+    background: inherit;
+    opacity: 0.5;
+}
+.material-switch > input[type="checkbox"]:checked + label::after {
+    background: inherit;
+    left: 20px;
+}
+.form-group > div > .material-switch, .form-group > div > div > .material-switch {
+	padding-top:20px;
+}
+
+
+.section.thick{
+    padding-top: 10px;
+    padding-bottom: 0;
+}
+.section.first{
+    padding-top: 60px;
+    padding-bottom: 0;
+}
+.section.avoid-navbar{
+    padding-top: 60px;
+}
+.row.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+}
+.row.no-gutters > [class^="col-"],
+.row.no-gutters > [class*=" col-"] {
+  padding-right: 0;
+  padding-left: 0;
+}
+.row.box{
+    border: 1px solid #e4e4e4;
+}
+.row.box-header{
+    background: #f7f7f7;
+    border-left: 4px solid #2ab4c2;
+    
+}
+.row.box-sidebar{
+    background: #f7f7f7;
+    border-left: 4px solid #2ab4c2;
+    margin-right: 5px;
+    
+}
+.row.box-header > div > div > ul > li {
+	background: none;
+    border: none;
+    padding: 5px;
+    color: #127ba3;
+    font-weight: 500;
+}
+.row.box-search{
+    background: #f7f7f7;
+    border-top: 4px solid #2ab4c2;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.row.box-cards{
+    background: #ffffff;
+    border-top: 4px solid #2ab4c2;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.col-login{
+    border: 1px solid #e4e4e4;
+    padding-bottom: 10px;
+}
+
+.btn-group-sm.btn-short-by > .btn{
+    height: 40px;
+    padding-top: 10px;
+}
+.input-group.limiter {
+	border-left: 1px solid #646464;
+}
+.media.media-cards{
+    border-bottom: 1px solid #cccccc;
+    padding: 10px 5px;
+}
+.form-control.lightblack-border {
+    border: 1px solid #8d8d8d;
+}
+.checkbox > label > input[type="checkbox"] {
+    display: block;
+}
+.no-padding-top {
+    padding-top: 0
+}.no-padding-right {
+    padding-right: 0
+}.no-padding-left {
+    padding-left: 0
+}.no-padding-bottom {
+    padding-bottom: 0
+}.no-margin-top {
+    margin-top: 0
+}.no-margin-right {
+    margin-right: 0
+}.no-margin-left {
+    margin-left: 0
+}.no-margin-bottom {
+    margin-bottom: 0
+}.no-radius{
+    border-radius: 0 !important;
+}
+
+
+.text-black {
+    color: black !important;
+}

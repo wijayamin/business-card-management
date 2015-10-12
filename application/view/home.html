@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <base href="{{root_uri}}"><!--[if lte IE 6]></base><![endif]-->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="public/assets/css/bootstrap.css">
+        <link href="public/assets/css/main.css" rel="stylesheet" type="text/css">
+        <link href="public/assets/css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <form method="post" action="search">
+        <div class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header" style="width:10%;">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="{{root_path}}" class="navbar-brand"><img height="20" alt="Brand" src="public/assets/img/LOGO%20PAL%20INDONESIA.png"></a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar-ex-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li style="padding-top:10px;">
+                            <img src="public/image/profile/{{users.image}}" width="30" height="30">
+                        </li>
+                        <li class="active">
+                            <a href="account">Akun</a>
+                        </li>
+                        <li>
+                            <a href="logout">Logout</a>
+                        </li>
+                    </ul>
+                    <div class="navbar-form" role="search">
+                        <div class="form-group" style="display: inline-table;width:70%;">
+                            <div class="input-group" style="width:100%;">
+                                <input type="text" class="form-control no-radius" name="name" placeholder="Pencarian Kartu Nama">
+                                <span class="input-group-addon top-bars btn-default" style="padding:0;">
+                                    <input type="submit" class="btn btn-xs btn-link" id="inputEmail3" value="Cari" style="width:100%;margin:0; color:#000;">
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section first">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2" style="{{# privilege.is_read}}display:none{{/ privilege.is_read}}{{# privilege.is_write}}display:none{{/ privilege.is_write}}{{# privilege.is_admin}}display:block{{/ privilege.is_admin}}{{# privilege.is_superuser}}display:block{{/ privilege.is_superuser}}">
+                        <!--[if (gte IE 9)|!(IE)]><!-->
+                        <div class="section thick"  data-spy="affix" data-offset-top="50">
+                        <!--<![endif]-->
+                        <!--[if lt IE 9]>
+                        <div class="section thick">
+                        <![endif]-->
+                            <div class="box box-sidebar hidden-sm hidden-xs row" >
+                                <div class="col-xs-12  text-center" style="background-color: #f7f7f7; padding-top:20px;">
+                                    <img src="public/image/profile/no-photo.png" style="max-width:50%;width:50%;height:auto;">                                    
+                                    <h3>{{users.real_name}}</h3>
+                                    <h5><strong>{{users.permission}}</strong></h5>
+                                </div>
+                                <hr>
+                                <div class="col-sm-12">
+                                    <div class="list-group">
+                                        <a href="{{root_path}}" class="list-group-item active">
+                                            <span class="badge">{{counter.cards}}</span>
+                                            Kartu Nama
+                                        </a>
+                                        <a href="{{root_path}}" class="list-group-item ">
+                                            <span class="badge">{{counter.users}}</span>
+                                            Pengguna
+                                        </a>
+                                        <a href="{{root_path}}" class="list-group-item ">
+                                            <span class="badge">{{counter.groups}}</span>
+                                            Grup
+                                        </a>
+                                        <a href="{{root_path}}" class="list-group-item ">
+                                            <span class="badge">1</span>
+                                            Pesan
+                                        </a>
+                                        <a class="list-group-item"  role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                            <span class="badge"><i class=" mdi mdi-settings"></i></span>
+                                            Pengaturan
+                                        </a>
+                                        <div class="list-group collapse" id="collapseExample">
+                                            <a href="{{root_path}}" class="list-group-item " style="background:#f5f5f5">
+                                                Pendaftaran
+                                            </a>
+                                            <a href="{{root_path}}" class="list-group-item " style="background:#f5f5f5">
+                                                Email
+                                            </a>
+                                            <a href="{{root_path}}" class="list-group-item " style="background:#f5f5f5">
+                                                SMTP
+                                            </a>
+                                            <a href="{{root_path}}" class="list-group-item " style="background:#f5f5f5">
+                                                Bantuan
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="{{# privilege.is_superuser}}col-md-10{{/ privilege.is_superuser}}{{# privilege.is_admin}}col-md-10{{/ privilege.is_admin}}{{# privilege.is_read}}col-md-12{{/ privilege.is_read}}{{# privilege.is_write}}col-md-12{{/ privilege.is_write}}">
+                        <div class="section thick">
+                            <!--[if lt IE 9]>
+                            <div class="alert alert-dismissible alert-warning" style="color:black;">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            <h4>Browser Anda Tidak Disupport !!</h4>
+                            <p>Browser anda terlalu
+                            <strong>Tua</strong>dan tidak mendukung secara maksimal fitur dari
+                            <strong>HTML5</strong>, silahkan menggunakan browser terbaru atau gunakan browser
+                            <strong>Google Chrome, Mozila Firefox, Opera atau Safari</strong>demi kemyamanan
+                            anda menggunakan aplikasi ini.</p>
+                            <p>Beberapa fitur tidak dapat ditampilkan secara maksimal jika anda tetap
+                            menggunakan browser ini</p>
+                            </div>
+                            <![endif]-->
+                            {{# activated}}
+                            <div class="alert alert-dismissible alert-warning" style="color:black;">
+                                <button type="button" class="close" data-dismiss="alert">×</button>
+                                <h4>Akun Anda Belum Aktif</h4>
+                                <p>Akun Yang belum aktif tidak dapat menggunakan fitur dalam aplikasi ini. Silahkan tekan tombol dibawah ini jika anda belum menerima email aktivasi.</p>
+                                <a href="{{url.activation}}" class="btn btn-primary">Kirim Ulang Email Aktivasi</a>
+                            </div>
+                            {{/ activated}}
+                            {{# no_group}}
+                            <div class="alert alert-dismissible alert-info" style="color:black;">
+                                <button type="button" class="close" data-dismiss="alert">×</button>
+                                <h4>Anda Belum Memiliki Grup</h4>
+                                <p>Anda Belum memiliki grup, silahkan gunakan tombol dibawah ini untuk mengajukan permintaan masuk ke grup</p>
+                                <a href="{{url.group_register}}" class="btn btn-primary">Pilih Grup</a>
+                            </div>
+                            {{/ no_group}}
+                            <div class="box box-header hidden-sm hidden-xs row">
+                                <div class="col-md-5 no-padding-right">
+                                    <h2>Perusahaan</h2>
+                                    <p class="box-inner">Pilih daftar kartu nama dengan kriteria perusahaan yang terdapat disamping.</p>
+                                    <div class="btn-group btn-group-xs hidden-sm hidden-xs" data-toggle="buttons">
+                                        <a href="#" class="active btn btn-default no-radius tabbers" data-url="{{url.company-list}}" data-toggle="button">Perusahaan</a>
+                                        <a href="#" class="btn btn-default  no-radius tabbers" data-url="{{url.occupation-list}}" data-toggle="button">Jabatan</a>
+                                        <a href="#" class="btn btn-default  no-radius tabbers" data-url="{{url.country-list}}" data-toggle="button">Negara</a>
+                                        <a href="#" class="btn btn-default  no-radius tabbers" data-url="{{url.category-list}}" data-toggle="button">Kategori</a>
+                                    </div>
+                                </div>
+                                <div class="col-md-7 hidden-sm hidden-xs tab-area">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="section thick  hidden-sm hidden-xs">
+                            <div class="row box box-search">
+                                <div class="col-md-12 hidden-sm hidden-xs no-padding-left no-padding-right no-padding-bottom">
+                                    <div class="form-group col-md-11  no-padding-bottom no-margin-bottom">
+                                        <div class="col-md-3 no-padding-left no-padding-right">
+                                            <div class="input-group no-radius">
+                                                <span class="input-group-addon no-radius">Perusahaan</span>
+                                                <input type="text" name="company" class="form-control no-radius" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 no-padding-left no-padding-right">
+                                            <div class="input-group no-radius limiter">
+                                                <span class="input-group-addon no-radius">Jabatan</span>
+                                                <input type="text" name="occupation" class="form-control no-radius">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 no-padding-left no-padding-right">
+                                            <div class="input-group no-radius limiter">
+                                                <span class="input-group-addon no-radius">Negara/Kota</span>
+                                                <input type="text" name="country" class="form-control no-radius">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 no-padding-left no-padding-right">
+                                            <div class="input-group no-radius limiter">
+                                                <span class="input-group-addon no-radius">Kategori</span>
+                                                <input type="text" name="category" class="form-control no-radius">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1 no-padding-left">
+                                        <input type="submit" class="form-control no-radius btn btn-primary" id="inputEmail3" value="Cari">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </form>
+                        <div class="section thick">
+                            <div class="row">
+                                <div style="float:left; padding-right:10px;">
+                                    <div class="btn-group btn-group-sm btn-short-by">
+                                        <a class="btn btn-primary" href="new"> Baru</a>
+                                    </div>
+                                </div>
+                                <div style="width:100%;" class="">
+                                    <ul class="breadcrumb no-margin-bottom">
+                                        <li>
+                                            <a href="{{root_path}}">Semua Kartu Nama</a>
+                                        </li>
+                                        {{# parameter.search}}
+                                        <li><a href="#">Pencarian</a></li>
+                                        {{/ parameter.search}}
+                                        {{# parameter.name}}<li class="active hidden-sm hidden-xs text-black">{{parameter.name}}</li>{{/ parameter.name}}
+                                        {{# parameter.occupation}}<li class="active hidden-sm hidden-xs text-black">{{parameter.occupation}}</li>{{/ parameter.occupation}}
+                                        {{# parameter.company}}<li class="active hidden-sm hidden-xs text-black">{{parameter.company}}</li>{{/ parameter.company}}
+                                        {{# parameter.city}}<li class="active hidden-sm hidden-xs text-black">{{parameter.city}}</li>{{/ parameter.city}}
+                                        {{# parameter.country}}<li class="active hidden-sm hidden-xs text-black">{{parameter.country}}</li>{{/ parameter.country}}
+                                        {{# parameter.category}}<li class="active hidden-sm hidden-xs text-black">{{parameter.category}}</li>{{/ parameter.category}}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="section" style="margin-top:20px;">
+                            <div class="row box box-cards">
+                                <div class="col-md-12">
+                                    {{# cards_found}}
+                                        <div class="col-md-12 text-center">
+                                            <h2>Kartu Nama Tidak Tersedia</h2>
+                                        </div>
+                                    {{/ cards_found}}
+                                    <ul class="media-list">
+                                        {{# cards}}
+                                        <li class="media media-cards">
+                                            <a class="pull-left" href="#">
+                                                {{# is_pdf}}
+                                                <!--[if (gte IE 9)|!(IE)]><!-->
+                                                <object type="application/pdf" data="public/data/{{card_image}}" width="200" height="130"></object>
+                                                <!--<![endif]-->
+                                                <!--[if lt IE 9]>
+                                                <embed width="100%" height="150" src="public/data/{{card_image}}"></embed>
+                                                <![endif]-->
+                                                {{/ is_pdf}}
+                                                {{# is_image}}
+                                                    <img src="public/data/{{card_image}}" width="200">
+                                                {{/ is_image}}
+                                            </a>
+                                            <div class="media-body row">
+                                                <div class="col-md-6" style="height:130px;">
+                                                    <h4 class="media-heading"><b>{{card_name}}</b></h4>
+                                                    <h5 class="media-heading">{{occupation_name}}</h5>
+                                                    <h5 class="media-heading"><b>{{company_name}}</b></h5>
+                                                    <h5 style="position: absolute;bottom: 0;word-wrap: break-word;">{{card_address}} <b>{{city_name}}, {{country_name}}</b></h5>
+                                                </div>
+                                                <div class="col-md-5 text-right" style="height:130px;">
+                                                    <h5 class="media-heading">{{card_phone}} <i class="mdi mdi-phone"></i></h5>
+                                                    <h5 class="media-heading">{{card_mobile}} <i class="mdi mdi-cellphone-iphone"></i></h5>
+                                                    <h5 class="media-heading">{{card_fax}} <i class="mdi mdi-deskphone"></i></h5>
+                                                    <h5 class="media-heading">{{card_email}} <i class="mdi mdi-email"></i></h5>
+                                                    <h5 class="media-heading">{{card_website}} <i class="mdi mdi-earth"></i></h5>
+                                                </div>
+                                                <div class="col-md-1 text-right no-padding-right no-margin-right" style="height:130px;">
+                                                    <div class="[ form-group ]">
+                                                        <!--[if lt IE 9]>
+                                                            <input type="checkbox" name="card_id" value="{{card_id}}" />
+                                                        <![endif]-->
+                                                        <!--[if (gte IE 9)|!(IE)]><!-->
+                                                        <input type="checkbox" name="fancy-checkbox-primary" id="fancy-checkbox-primary" autocomplete="off" />
+                                                        <div class="[ btn-group btn-group-xs ]">
+                                                            <label for="fancy-checkbox-primary" class="[ btn btn-default ]"  style="float:right; width:42px;">
+                                                                <span class="[ glyphicon glyphicon-ok ]"></span>
+                                                                <span>Pilih</span>
+                                                            </label>
+                                                        <!--<![endif]-->
+                                                        <a href="#" class="btn btn-primary btn-xs no-margin-right" style="float:right; width:42px;">Edit</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>  
+                                        {{/ cards}}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="section">
+                            <hr style="margin-bottom:5px;">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="pull-left">
+                                        <div class="btn-group btn-group-sm btn-short-by">
+                                            <a class="btn btn-danger" href="#"> Hapus</a>
+                                        </div>
+                                        <div class="btn-group btn-group-sm btn-short-by">
+                                            <a class="btn btn-primary hidden-xs" href="#"> Cetak</a>
+                                        </div>
+                                        <span style="padding-left:10px;">Daftar Kartu Nama <strong>{{page_now}}</strong> - <strong>{{page_count}}</strong> dari <strong>{{cards_count}}</strong> </span>
+                                    </div>
+                                    <div class="pull-right">
+                                        <ul class="pagination no-margin-top">
+                                            {{# page.prev}}
+                                            <li>
+                                                <a href="{{url}}" class="no-radius">Sebelumnya</a>
+                                            </li>
+                                            {{/ page.prev}}
+                                            {{# page.pages}}
+                                            <li>
+                                                <a href="#" class="btn btn-primary {{active}}" data-toggle="button">{{title}}</a>
+                                            </li>
+                                            {{/ page.pages}}
+                                            {{# page.next}}
+                                            <li>
+                                                <a href="{{url}}" class="no-radius" style="">Selanjutnya</a>
+                                            </li>
+                                            {{/ page.next}}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!--[if lt IE 9]>
+        <script type="text/javascript" src="public/assets/js/html5shiv.js"></script>
+        <script src="public/assets/js/respond.js"></script>
+        <![endif]-->
+        <script type="text/javascript" src="public/assets/js/jquery.min.js"></script>
+        <script type="text/javascript" src="public/assets/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="public/assets/js/mustache.min.js"></script>   
+        <script type="text/javascript" src="public/assets/js/bootstrap3-typeahead.min.js"></script>
+        {{=<% %>=}}
+        <script id="template-tabs" type="x-tmpl-mustache">
+            {{# list4 }}
+            <div class="col-md-4">
+                <ul class="list-group text-left">
+                {{# list3 }}
+                    <li class="list-group-item">
+                        <a href="{{url}}" class="btn btn-link no-padding-top no-padding-bottom">{{name}}</a>
+                    </li>
+                {{/ list3 }}
+                </ul>
+            </div>
+            {{/ list4 }}
+        </script>
+        <script id="template-tabs-pager" type="x-tmpl-mustache">
+            <ul class="pager pull-right no-margin-top">
+                <li class="">
+                    <a class="no-radius" style="cursor: pointer; padding: 3px 5px 1px;" onclick="pagers(this);" data-url="{{url}}" data-page="{{prev}}">← Sebelumnya</a>
+                </li>
+                <li class="">
+                    <a class="no-radius" style="cursor: pointer; padding: 3px 5px 1px;" onclick="pagers(this);" data-url="{{url}}" data-page="{{next}}">Selanjutnya →</a>
+                </li>
+            </ul>
+        </script>
+        <%={{ }}=%>
+        <script>
+            $(function() {
+                var $affixElement = $('div[data-spy="affix"]');
+                $affixElement.width($affixElement.parent().width());
+                
+            });
+        </script>
+        <script>
+            $(document).ready(function(){
+                getDetailList('{{url.company-list}}', 1);
+                $('.tabbers').on('click', function(){
+                    $('.tabbers').each(function(){
+                        $(this).removeClass('active');
+                    })
+                    $(this).addClass('active');
+                    var url = $(this).data('url');
+                    getDetailList(url, 1);
+                });
+                $("input[name=company]").typeahead({ source:{{{hint.company}}} });
+                $("input[name=occupation]").typeahead({ source:{{{hint.occupation}}} });
+                $("input[name=country]").typeahead({ source:{{{hint.country}}} });
+                $("input[name=category]").typeahead({ source:{{{hint.category}}} });
+                
+                var list = JSON.stringify({{{list}}});
+                console.log(list)
+            });
+            function pagers(selector){
+                var url = $(selector).data('url');
+                var page = $(selector).data('page');
+                getDetailList(url, page);
+
+            }
+            function getDetailList(url, page){
+                $.getJSON(url+page, function(data){
+                    page=(page < 1 ? 1 : page);
+                    var template = $('#template-tabs').html();
+                    var pager = $('#template-tabs-pager').html();
+                    var pagers = Mustache.render(pager, {prev:page-1, next:page+1, url:url});
+                    var rendered = Mustache.render(template+pagers, data);
+                    $('.tab-area').html(rendered);
+                });  
+            }
+        </script>
+    </body>
+</html>

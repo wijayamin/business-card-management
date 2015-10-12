@@ -1,0 +1,202 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="res/css/bootstrap.css">
+        <link href="res/css/main.css" rel="stylesheet" type="text/css">
+        <link href="res/css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <div class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header" style="width:10%;">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand"><img height="20" alt="Brand" src="res/img/LOGO%20PAL%20INDONESIA.png"></a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar-ex-collapse">
+                    <ul class="nav navbar-nav navbar-right" style="width:20%;">
+                        <li style="padding-top:10px;">
+                            <img src="res/img/profile/no-photo.png" width="30" height="30">
+                        </li>
+                        <li class="active">
+                            <a href="#">Akun</a>
+                        </li>
+                        <li>
+                            <a href="#">Logout</a>
+                        </li>
+                    </ul>
+                    <form class="navbar-form" role="search">
+                        <div class="form-group" style="display: inline-table;width:70%;">
+                            <div class="input-group" style="width:100%;">
+                                <input type="text" class="form-control no-radius" placeholder="Pencarian Kartu Nama">
+                                <span class="input-group-addon top-bars btn-default" style="padding:0;">
+                                    <input type="submit" class="btn btn-xs btn-link" id="inputEmail3" value="Cari" style="width:100%;margin:0; color:#000;">
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="section first">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="section thick"  data-spy="affix" data-offset-top="50">
+                            <div class="box box-sidebar hidden-sm hidden-xs row" >
+                                <div class="col-xs-12  text-center" style="background-color: #f7f7f7; padding-top:20px;">
+                                    <img src="res/img/profile/no-photo.png" style="max-width:50%;width:50%;height:auto;">                                    
+                                    <h3>Supper Admin</h3>
+                                    <h5><strong>Administrator</strong></h5>
+                                </div>
+                                <hr>
+                                <div class="col-sm-12">
+                                    <ul class="list-group">
+                                        <li class="list-group-item ">
+                                            <span class="badge">14</span>
+                                            Kartu Nama
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="badge">2</span>
+                                            Pengguna
+                                        </li>
+                                        <li class="list-group-item active">
+                                            <span class="badge">1</span>
+                                            Grup
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="badge">1</span>
+                                            Pesan
+                                        </li>
+                                        <li class="list-group-item"  role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                            <span class="badge"></span>
+                                            Pengaturan
+                                        </li>
+                                        <ul class="list-group collapse" id="collapseExample">
+                                            <li class="list-group-item">
+                                                Pengaturan Pendaftaran
+                                            </li>
+                                            <li class="list-group-item">
+                                                Pengaturan Email
+                                            </li>
+                                            <li class="list-group-item">
+                                                Pengaturan SMTP
+                                            </li>
+                                            <li class="list-group-item">
+                                                Bantuan
+                                            </li>
+                                            <li class="list-group-item">
+                                                Tentang Aplikasi
+                                            </li>
+                                        </ul>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="section thick">
+                            <div class="row box box-cards">
+                                <div class="col-md-6">
+                                    <div class="btn-group btn-group-sm btn-short-by">
+                                        <a class="btn btn-primary" href="#">Buat Grup Baru</a>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control no-radius" placeholder="Pencarian Pengguna">
+                                            <span class="input-group-addon top-bars btn-default" style="padding:0;">
+                                                <input type="submit" class="btn btn-xs btn-link" id="inputEmail3" value="Cari" style="width:100%;margin:0; color:#000;">
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="section thick">
+                            <div class="row box box-cards">
+                                <table class="table table-striped table-hover">
+                                    <thead>
+                                        <tr class="info">
+                                            <th>#</th>
+                                            <th>Nama Grup</th>
+                                            <th>Jumlah Pengguna</th>
+                                            <th>Jumlah Kartu Nama</th>
+                                            <th class="text-right">Tindakan</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Grup 1</td>
+                                            <td>2 Pengguna</td>
+                                            <td>28 Kartu Nama</td>
+                                            <td class="text-right">
+                                                <a class="btn btn-primary btn-xs">Moderasi</a>
+                                                <a class="btn btn-danger btn-xs">Hapus</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="section">
+                            <hr style="margin-bottom:5px;">
+                            <div class="row">
+                                <div style="float:left;">
+                                    <span style="padding-left:10px;">Daftar Pengguna <strong>1</strong> - <strong>10</strong> dari <strong>200</strong> </span>
+                                </div>
+                                <div style="float:right;">
+                                    <ul class="pagination no-margin-top">
+                                        <li>
+                                            <a href="#" class="no-radius">Prev</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">1</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">2</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">3</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">4</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">5</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="no-radius">Next</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!--[if lt IE 9]>
+        <script type="text/javascript" src="res/js/html5shiv.js"></script>
+        <script src="res/js/respond.js"></script>
+        <![endif]-->
+        <script type="text/javascript" src="res/js/jquery.min.js"></script>
+        <script type="text/javascript" src="res/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="res/js/mustache.min.js"></script>
+        <script>
+            $(function() {
+                var $affixElement = $('div[data-spy="affix"]');
+                $affixElement.width($affixElement.parent().width());
+            });
+        </script>
+    </body>
+</html>
