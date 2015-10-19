@@ -14,6 +14,8 @@ Progress 85%
 ##### catatan Versi 0.2
 * Email menggunakan smtp server hosting gratisan (kemungkinan email tidak terikirm menjadi besar)
 * beberapa fitur belum bisa digunakan seperti manajemen grup, pesan, dan pengaturan
+* Username Super Admin : Admin
+* Password Super Admin : Admin
 
 ##### dibangun menggunakan
 * Slim Framework (PHP Framework)
