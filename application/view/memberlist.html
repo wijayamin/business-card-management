@@ -1,11 +1,14 @@
+<!DOCTYPE html>
 <html>
     <head>
+        <base href="{{root_uri}}"><!--[if lte IE 6]></base><![endif]-->
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="res/css/bootstrap.css">
-        <link href="res/css/main.css" rel="stylesheet" type="text/css">
-        <link href="res/css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="public/assets/css/bootstrap.css">
+        <link href="public/assets/css/main.css" rel="stylesheet" type="text/css">
+        <link href="public/assets/css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
+        <link href="public/assets/css/bootstrap-tagsinput.css" rel="stylesheet" type="text/css">
     </head>
     <body>
         <div class="navbar navbar-default navbar-fixed-top">
@@ -17,21 +20,21 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand"><img height="20" alt="Brand" src="res/img/LOGO%20PAL%20INDONESIA.png"></a>
+                    <a href="{{root_path}}" class="navbar-brand"><img height="20" alt="Brand" src="public/assets/img/LOGO%20PAL%20INDONESIA.png"></a>
                 </div>
                 <div class="collapse navbar-collapse" id="navbar-ex-collapse">
-                    <ul class="nav navbar-nav navbar-right" style="width:20%;">
+                    <ul class="nav navbar-nav navbar-right" >
                         <li style="padding-top:10px;">
-                            <img src="res/img/profile/no-photo.png" width="30" height="30">
+                            <img src="public/image/profile/{{users.image}}" width="30" height="30">
                         </li>
                         <li class="active">
                             <a href="#">Akun</a>
                         </li>
                         <li>
-                            <a href="#">Logout</a>
+                            <a href="logout">Logout</a>
                         </li>
                     </ul>
-                    <form class="navbar-form" role="search">
+                    <form class="navbar-form" method="post" action="search">
                         <div class="form-group" style="display: inline-table;width:70%;">
                             <div class="input-group" style="width:100%;">
                                 <input type="text" class="form-control no-radius" placeholder="Pencarian Kartu Nama">
@@ -47,92 +50,84 @@
         <div class="section first">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <div class="section thick"  data-spy="affix" data-offset-top="50">
                             <div class="box box-sidebar hidden-sm hidden-xs row" >
                                 <div class="col-xs-12  text-center" style="background-color: #f7f7f7; padding-top:20px;">
-                                    <img src="res/img/profile/no-photo.png" style="max-width:50%;width:50%;height:auto;">                                    
+                                    <img src="public/image/profile/{{users.image}}" style="max-width:50%;width:50%;height:auto;">
                                     <h3>Supper Admin</h3>
                                     <h5><strong>Administrator</strong></h5>
                                 </div>
                                 <hr>
-                                <div class="col-sm-12">
-                                    <ul class="list-group">
-                                        <li class="list-group-item ">
+                                <div class="col-sm-12"  style="padding: 5px">
+                                    <div class="list-group">
+                                        <a href="{{root_path}}" class="list-group-item ">
                                             <span class="badge">14</span>
                                             Kartu Nama
-                                        </li>
-                                        <li class="list-group-item active">
+                                        </a>
+                                        <a href="userlist" class="list-group-item active">
                                             <span class="badge">2</span>
                                             Pengguna
-                                        </li>
-                                        <li class="list-group-item">
+                                        </a>
+                                        <a href="grouplist" class="list-group-item">
                                             <span class="badge">1</span>
                                             Grup
-                                        </li>
-                                        <li class="list-group-item">
+                                        </a>
+                                        <a class="list-group-item">
                                             <span class="badge">1</span>
                                             Pesan
-                                        </li>
-                                        <li class="list-group-item"  role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                        </a>
+                                        <a class="list-group-item"  role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                                             <span class="badge"></span>
                                             Pengaturan
-                                        </li>
-                                        <ul class="list-group collapse" id="collapseExample">
-                                            <li class="list-group-item">
+                                        </a>
+                                        <div class="list-group collapse" id="collapseExample">
+                                            <a href="setting/registration" class="list-group-item">
                                                 Pengaturan Pendaftaran
-                                            </li>
-                                            <li class="list-group-item">
+                                            </a>
+                                            <a class="list-group-item">
                                                 Pengaturan Email
-                                            </li>
-                                            <li class="list-group-item">
+                                            </a>
+                                            <a class="list-group-item">
                                                 Pengaturan SMTP
-                                            </li>
-                                            <li class="list-group-item">
+                                            </a>
+                                            <a class="list-group-item">
                                                 Bantuan
-                                            </li>
-                                            <li class="list-group-item">
+                                            </a>
+                                            <a class="list-group-item">
                                                 Tentang Aplikasi
-                                            </li>
-                                        </ul>
-                                    </ul>
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-9">
+                    <div class="col-md-10" id="memberlist">
                         <div class="section thick">
                             <div class="row box box-cards">
                                 <div class="col-md-6">
                                     <div class="btn-group btn-group-sm btn-short-by">
-                                        <a class="btn btn-primary" href="#">Undang Pengguna Baru</a>
+                                        <a class="btn btn-primary"role="button" data-toggle="modal" data-target="#undang">Undang Pengguna Baru</a>
                                     </div>
                                     <div class="btn-group btn-group-sm btn-short-by" style="">
-                                        <a class="btn btn-default dropdown-toggle" data-toggle="dropdown"> Grup <span class="mdi mdi-chevron-down"></span></a>
+                                        <a class="btn btn-default dropdown-toggle" data-toggle="dropdown"> Urutkan <span class="mdi mdi-chevron-down"></span></a>
                                         <ul class="dropdown-menu" role="menu">
                                             <li>
-                                                <a href="#">Action</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="btn-group btn-group-sm btn-short-by" style="">
-                                        <a class="btn btn-default dropdown-toggle" data-toggle="dropdown"> Hak Akses <span class="mdi mdi-chevron-down"></span></a>
-                                        <ul class="dropdown-menu" role="menu">
-                                            <li>
-                                                <a href="#">Action</a>
+                                                <a class="sort" data-sort="name">Nama</a>
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <input type="text" class="form-control no-radius" placeholder="Pencarian Pengguna">
-                                            <span class="input-group-addon top-bars btn-default" style="padding:0;">
-                                                <input type="submit" class="btn btn-xs btn-link" id="inputEmail3" value="Cari" style="width:100%;margin:0; color:#000;">
-                                            </span>
-                                        </div>
-                                    </div>
+                                            <input type="text" class="form-control no-radius search" placeholder="Pencarian Pengguna">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="section thick">
+                            <div class="row box box-cards">
+                                <div class="col-md-12">
+                                    <b> Keterangan</b> : <b class="text-muted">Belum Aktif</b>&nbsp;&#124;&nbsp;<b class="text-success">Belum Tergabung Grup</b>
                                 </div>
                             </div>
                         </div>
@@ -145,77 +140,162 @@
                                             <th colspan="2">Nama Pengguna</th>
                                             <th>Username</th>
                                             <th>Email</th>
-                                            <th>User Role</th>
+                                            <th>Group</th>
+                                            <th>Permission</th>
                                             <th class="text-right">Tindakan</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td><img src="res/img/profile/no-photo.png" width="25" height="25"></td>
-                                            <td>Sri Rahayu</td>
-                                            <td>SriImoetz</td>
-                                            <td>SriImoetz@gmail.com</td>
-                                            <td>Group Admin</td>
+                                    <tbody class="list">
+                                        {{# userlist}}
+                                        <tr class="{{# is_active}}text-muted{{/ is_active}}">
+                                            <td>{{user_id}}</td>
+                                            <td><img src="public/image/profile/{{image}}" width="25" height="25"></td>
+                                            <td class="name">{{real_name}}</td>
+                                            <td class="username">{{username}}</td>
+                                            <td class="email">{{email}}</td>
+                                            <td class="group">{{group_name}}</td>
+                                            <td class="permission">{{permission}}</td>
                                             <td class="text-right">
-                                                <a class="btn btn-primary btn-xs">Moderasi</a>
-                                                <a class="btn btn-danger btn-xs">Hapus</a>
+                                                <a role="button"  data-toggle="modal" data-target="#moderasi" data-id="{{user_id}}" data-permission="{{permission}}" data-name="{{real_name}}" class="btn btn-primary btn-xs">Moderasi</a>
                                             </td>
                                         </tr>
+                                        {{/ userlist}}
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-                        <div class="section">
-                            <hr style="margin-bottom:5px;">
-                            <div class="row">
-                                <div style="float:left;">
-                                    <span style="padding-left:10px;">Daftar Pengguna <strong>1</strong> - <strong>10</strong> dari <strong>200</strong> </span>
-                                </div>
-                                <div style="float:right;">
-                                    <ul class="pagination no-margin-top">
-                                        <li>
-                                            <a href="#" class="no-radius">Prev</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">1</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">2</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">3</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">4</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">5</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="no-radius">Next</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
-        
+        <div class="modal fade" id="undang" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <form method="post" action="invite">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Undang Pengguna Baru</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <div class="form-group">
+                                        <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+                                        <div class="col-lg-10">
+                                            <input type="text" class="form-control" name="email" placeholder="Email">
+                                            <input type="hidden" class="form-control" name="name" value="{{users.real_name}}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputEmail" class="col-lg-2 control-label">Grup</label>
+                                        <div class="col-lg-10">
+                                            <select class="form-control" name="group">
+                                                {{# group_list}}
+                                                <option value="{{group_id}}">{{group_name}}</option>
+                                                {{/ group_list}}
+                                            </select>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+                            <button type="submit" class="btn btn-primary">Undang</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="moderasi" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <form method="post" action="moderation">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Moderasi Akun</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <div class="form-group">
+                                        <label for="inputEmail" class="col-lg-2 control-label">Akun</label>
+                                        <div class="col-lg-10">
+                                            <input type="text" class="form-control" name="name" readonly id="name">
+                                            <input type="hidden" class="form-control" name="id" id="id" value="{{users.user_id}}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputEmail" class="col-lg-2 control-label">Permission</label>
+                                        <div class="col-lg-10">
+                                            <select class="form-control" name="permission" id="permission">
+                                                <option value="read">Read Only</option>
+                                                <option value="write">Read Write</option>
+                                                <option value="admin">Group Admin</option>
+                                                <option value="superuser">Super User</option>
+                                            </select>
+                                        </div>
+                                    </div>
+<!--
+                                    <div class="form-group">
+                                        <label for="inputEmail" class="col-lg-2 control-label">Grup</label>
+                                        <div class="col-lg-10">
+                                            <select class="form-control" name="group">
+                                                {{# group_list}}
+                                                <option value="{{group_id}}">{{group_name}}</option>
+                                                {{/ group_list}}
+                                            </select>
+                                        </div>
+                                    </div>
+-->
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="button" id="remove" class="btn btn-danger pull-left">Hapus Akun</a>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+                            <button type="submit" class="btn btn-primary">Simpan</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
         <!--[if lt IE 9]>
-        <script type="text/javascript" src="res/js/html5shiv.js"></script>
-        <script src="res/js/respond.js"></script>
+        <script type="text/javascript" src="public/assets/js/html5shiv.js"></script>
+        <script src="public/assets/js/respond.js"></script>
         <![endif]-->
-        <script type="text/javascript" src="res/js/jquery.min.js"></script>
-        <script type="text/javascript" src="res/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="res/js/mustache.min.js"></script>
+        <script type="text/javascript" src="public/assets/js/jquery.min.js"></script>
+        <script type="text/javascript" src="public/assets/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="public/assets/js/mustache.min.js"></script>
+        <script type="text/javascript" src="public/assets/js/typeahead.bundle.js"></script>
+        <script type="text/javascript" src="public/assets/js/list.min.js"></script>
         <script>
             $(function() {
                 var $affixElement = $('div[data-spy="affix"]');
                 $affixElement.width($affixElement.parent().width());
+                var options = {
+                    valueNames: [ 'name', 'username', 'email', 'group', 'permission' ]
+                };
+
+                var memberlist = new List('memberlist', options);
             });
+        </script>
+        <script>
+            $('#moderasi').on('show.bs.modal', function (event) {
+              var button = $(event.relatedTarget) // Button that triggered the modal
+              var user_id = button.data('id') // Extract info from data-* attributes
+              var permission = button.data('permission') // Extract info from data-* attributes
+              var name = button.data('name') // Extract info from data-* attributes
+              // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+              // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+              var modal = $(this)
+              modal.find('#name').val(name)
+              modal.find('#id').val(user_id)
+              modal.find('#permission').val(permission)
+              modal.find('#remove').attr('href', 'removeaccount/'+user_id)
+            })
         </script>
     </body>
 </html>

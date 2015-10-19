@@ -1,12 +1,14 @@
+<!DOCTYPE html>
 <html>
     <head>
+        <base href="{{root_uri}}"><!--[if lte IE 6]></base><![endif]-->
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        
-        <link rel="stylesheet" href="res/css/bootstrap.css">
-        <link href="res/css/main.css" rel="stylesheet" type="text/css">
-        <link href="res/css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="public/assets/css/bootstrap.css">
+        <link href="public/assets/css/main.css" rel="stylesheet" type="text/css">
+        <link href="public/assets/css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
+        <link href="public/assets/css/bootstrap-tagsinput.css" rel="stylesheet" type="text/css">
     </head>
     <body>
         <div class="navbar navbar-default navbar-fixed-top">
@@ -19,13 +21,15 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand">
-                        <img height="20" alt="Brand" src="res\img\LOGO PAL INDONESIA.png">
+
+                        <img height="20" alt="Brand" src="public/assets/img/LOGO%20PAL%20INDONESIA.png">
+
                     </a>
                 </div>
                 <div class="collapse navbar-collapse" id="navbar-ex-collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li class="active">
-                            <a href="#">Masuk</a>
+                            <a href="{{root_path}}">Masuk</a>
                         </li>
                     </ul>
                 </div>
@@ -42,7 +46,7 @@
                         </p>
                         <div class="form-group">
                             <div class="col-sm-offset-4 col-sm-4">
-                                <button type="submit" class="btn btn-block btn-primary">masuk</button>
+                                <a href="{{root_path}}" type="submit" class="btn btn-block btn-primary">masuk</a>
                             </div>
                         </div>
                     </div>
@@ -83,13 +87,13 @@
                 </div>
             </div>
         </footer>
-        
+
         <!--[if lt IE 9]>
-        <script type="text/javascript" src="res/js/html5shiv.js"></script>
-        <script src="res/js/respond.js"></script>
+        <script type="text/javascript" src="public/assets/js/html5shiv.js"></script>
+        <script src="public/assets/js/respond.js"></script>
         <![endif]-->
-        <script type="text/javascript" src="res/js/jquery.min.js"></script>
-        <script type="text/javascript" src="res/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="res/js/mustache.min.js"></script>   
+        <script type="text/javascript" src="public/assets/js/jquery.min.js"></script>
+        <script type="text/javascript" src="public/assets/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="public/assets/js/mustache.min.js"></script>
     </body>
 </html>

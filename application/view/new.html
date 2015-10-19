@@ -53,28 +53,31 @@
                     <form method="post" action="new/save" enctype="multipart/form-data">
                     <div class="col-md-5 col-sm-5 col-xs-12">
                         <!--[if (gte IE 9)|!(IE)]><!-->
-                        <div data-spy="affix" data-offset-top="60" style="height: 500px;margin-top:10px;">
+                        <div data-spy="affix" data-offset-top="60" style="width:450px;margin-top:10px;">
                             <!--<![endif]-->
                             <!--[if lt IE 9]>
                             <div class="col-md-5" style="height: 500px; width:450px; position: fixed; top: 12%; border: 1px solid gray;">
                             <![endif]-->
                             <div style="width:100%;">
                                 <legend>Kartu Nama</legend>
-                                <div id="viewer" style="width:100%; height:400px; border:10px dashed #777" class="text-center">
-                                    <h1 style="margin-top:160px; color:#777;">Tempat Kartu Nama</h1>
+                                <div id="viewer" style="width:100%; height:300px; border:10px dashed #777" class="text-center">
+                                    <h1 style="margin-top:120px; color:#777;">Tempat Kartu Nama</h1>
                                 </div>
-<!--
-                                <iframe id="viewer" width="100%" height="400" src="public/data/img007.pdf#view=fitH" seamless >
-                                    <h1>Tempat Kartu Nama</h1>
-                                </iframe>
--->
                                 <div class="form-horizontal" style="padding-top:10px;" data-toggle="tooltip" data-placement="bottom" title="Pilih file kartu nama untuk diupload kedalam aplikasi, format yang di izinkan adalah berbentuk image(gambar) dan PDF">
                                     <div class="form-group">
-                                        <div class="col-sm-3">
+                                        <div class="col-sm-4">
                                             <label for="inputEmail3" class="control-label">File Kartu Nama</label>
                                         </div>
-                                        <div class="col-sm-9">
+                                        <div class="col-sm-8">
                                             <input type="file" name="card_image" id="pdf" class="form-control no-radius lightblack-border  form-important" onchange="loadname(this,'viewer');">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-4">
+                                            <label class="control-label">Grup</label>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <input id="card_groups"  type="text" name="card_group" class="form-control no-radius lightblack-border  form-important" value="{{default_group}}">
                                         </div>
                                     </div>
                                 </div>
@@ -128,7 +131,7 @@
                                         <label for="inputPassword3" class="control-label">Nomor Telepon</label>
                                     </div>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control no-radius lightblack-border" name="card_phone" placeholder="0317685002" tabindex="4">
+                                        <input data-role="tagsinput" type="text" class="form-control no-radius lightblack-border" name="card_phone" placeholder="0317685002" tabindex="4">
                                     </div>
                                 </div>
                                 <div class="form-group"  data-toggle="tooltip" data-placement="top" title="Jika terdapat lebih dari satu nomor, mohon untuk dipisah dengan koma (,)">
@@ -136,7 +139,7 @@
                                         <label for="inputPassword3" class="control-label">Nomor Hp</label>
                                     </div>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control no-radius lightblack-border" name="card_mobile" placeholder="083838685002" tabindex="5">
+                                        <input data-role="tagsinput" type="text" class="form-control no-radius lightblack-border" name="card_mobile" placeholder="083838685002" tabindex="5">
                                     </div>
                                 </div>
                                 <div class="form-group"  data-toggle="tooltip" data-placement="top" title="Jika terdapat lebih dari satu nomor, mohon untuk dipisah dengan koma (,)">
@@ -144,7 +147,7 @@
                                         <label for="inputPassword3" class="control-label">Nomor Fax</label>
                                     </div>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control no-radius lightblack-border" name="card_fax" placeholder="0317685002" tabindex="6">
+                                        <input data-role="tagsinput" type="text" class="form-control no-radius lightblack-border" name="card_fax" placeholder="0317685002" tabindex="6">
                                     </div>
                                 </div>
                                 <div class="form-group"  data-toggle="tooltip" data-placement="top" title="Jika terdapat lebih dari satu email, mohon untuk dipisah dengan koma (,)">
@@ -152,7 +155,7 @@
                                         <label for="inputPassword3" class="control-label">Alamat Email</label>
                                     </div>
                                     <div class="col-sm-8">
-                                        <input type="text" data-role="tagsinput" class="form-control no-radius lightblack-border" name="card_email" placeholder="JhonDoe@exaple.com" tabindex="7">
+                                        <input data-role="tagsinput" type="text" data-role="tagsinput" class="form-control no-radius lightblack-border" name="card_email" placeholder="JhonDoe@exaple.com" tabindex="7">
                                     </div>
                                 </div>
                                 <legend>Informasi Alamat</legend>
@@ -225,48 +228,87 @@
         <![endif]-->
         <script type="text/javascript" src="public/assets/js/jquery.min.js"></script>
         <script type="text/javascript" src="public/assets/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="public/assets/js/mustache.min.js"></script>   
-        <script type="text/javascript" src="public/assets/js/typeahead.bundle.js"></script>  
-        <script type="text/javascript" src="public/assets/js/bootstrap-tagsinput.min.js"></script>    
+        <script type="text/javascript" src="public/assets/js/mustache.min.js"></script>
+        <script type="text/javascript" src="public/assets/js/typeahead.bundle.js"></script>
+        <script type="text/javascript" src="public/assets/js/bootstrap-tagsinput.min.js"></script>
+        <script type="text/javascript" src="public/assets/js/bootstrap3-typeahead.min.js"></script>
         <script>
             $(function () {
                 $('[data-toggle="tooltip"]').tooltip()
+                $("input[name=card_company]").typeahead({ source:{{{hint.company}}}});
+                $("input[name=card_city]").typeahead({ source:{{{hint.city}}} });
+                $("input[name=card_country]").typeahead({ source:{{{hint.country}}}});
             })
+            $(document).ready(function(){
+                $("input[name=card_group]").tagsinput({
+                    typeahead :{
+                        source: {{{hint.group}}},
+                    }
+                });
+                $("input[name=card_occupation]").tagsinput({
+                    typeahead :{
+                        source: {{{hint.occupation}}},
+                    }
+                });
+                $("input[name=card_category]").tagsinput({
+                    typeahead :{
+                        source: {{{hint.category}}},
+                    }
+                });
+            })
+            $('input[name=card_group]').on('itemAdded', function() {
+                setTimeout(function() {
+                    $(">input[type=text]", ".bootstrap-tagsinput").val("");
+                    $('.typeahead').css("display", 'none');
+                }, 1);
+            });
+            $('input[name=card_occupation]').on('itemAdded', function() {
+                setTimeout(function() {
+                    $(">input[type=text]", ".bootstrap-tagsinput").val("");
+                    $('.typeahead').css("display", 'none');
+                }, 1);
+            });
+            $('input[name=card_category]').on('itemAdded', function() {
+                setTimeout(function() {
+                    $(">input[type=text]", ".bootstrap-tagsinput").val("");
+                    $('.typeahead').css("display", 'none');
+                }, 1);
+            });
         </script>
         <script>
-            function loadname(img, previewName){  
-    
-                var isIE = (navigator.appName=="Microsoft Internet Explorer");  
-                var path = img.value;  
-                var ext = path.substring(path.lastIndexOf('.') + 1).toLowerCase();  
-            
-                if(ext == "pdf"){       
-                    if(isIE) {  
+            function loadname(img, previewName){
+
+                var isIE = (navigator.appName=="Microsoft Internet Explorer");
+                var path = img.value;
+                var ext = path.substring(path.lastIndexOf('.') + 1).toLowerCase();
+
+                if(ext == "pdf"){
+                    if(isIE) {
                         $('#'+ previewName).replaceWith('<embed width="100%" height="400" src="'+path+'"></embed>');
-                    }else{  
-                        if (img.files[0]){  
-                            var reader = new FileReader();  
-                            reader.onload = function (e) {  
+                    }else{
+                        if (img.files[0]){
+                            var reader = new FileReader();
+                            reader.onload = function (e) {
                                 $('#'+ previewName).replaceWith('<iframe width="100%" height="400" src="'+e.target.result+'"></iframe>')
                             }
-                            reader.readAsDataURL(img.files[0]);  
-                        }  
-                    }  
-                }else if(ext == "jpeg" || ext == "jpg" ||  ext == "png" ){  
-                      
-                    if(isIE) {  
+                            reader.readAsDataURL(img.files[0]);
+                        }
+                    }
+                }else if(ext == "jpeg" || ext == "jpg" ||  ext == "png" ){
+
+                    if(isIE) {
                         $('#'+ previewName).replaceWith('<img width="100%" src="'+path+'">');
-                    }else{  
-                        if (img.files[0]){  
-                            var reader = new FileReader();  
-                            reader.onload = function (e) {  
+                    }else{
+                        if (img.files[0]){
+                            var reader = new FileReader();
+                            reader.onload = function (e) {
                                 $('#'+ previewName).replaceWith('<img width="100%" src="'+e.target.result+'">');
                             }
-                            reader.readAsDataURL(img.files[0]);  
-                        }  
-                    }  
-                }   
-            }  
+                            reader.readAsDataURL(img.files[0]);
+                        }
+                    }
+                }
+            }
         </script>
         <script>
             var substringMatcher = function(strs) {
@@ -291,12 +333,6 @@
               };
             };
             $(document).ready(function(){
-                $('#occupation').tagsinput({
-                  typeaheadjs: {
-                      source: substringMatcher(['Amsterdam', 'Washington', 'Sydney', 'Beijing', 'Cairo']),
-                      highlight : true
-                  }
-                });
             })
         </script>
     </body>

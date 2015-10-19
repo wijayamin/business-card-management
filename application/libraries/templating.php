@@ -13,11 +13,11 @@ class Templating{
     public function prepare($html){
         $this->rendered_template=file_get_contents('application/view/'.$html, true);
     }
-    
+
     public function param($parameter, $value){
         $this->template_param[$parameter]=$value;
     }
-    
+
     public function execute(){
         $m = new Mustache_Engine();
         echo $m->render($this->rendered_template, $this->template_param);
@@ -25,6 +25,11 @@ class Templating{
         $this->rendered_template;
         $this->app;
         $this->req;
+    }
+
+    public function render($html, $paramerer){
+        $m = new Mustache_Engine();
+        return $m->render(file_get_contents('application/view/'.$html, true), $paramerer);
     }
 }
 ?>

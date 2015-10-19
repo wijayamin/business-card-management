@@ -8,6 +8,7 @@ require 'core/PHPMailer/PHPMailerAutoload.php';
 \Slim\Slim::registerAutoloader();
 Mustache_Autoloader::register();
 $app = new \Slim\Slim();
+$m = new Mustache_Engine;
 
 // load cpnfigurations
 require 'config.php';

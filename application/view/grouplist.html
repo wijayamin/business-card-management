@@ -1,11 +1,14 @@
+<!DOCTYPE html>
 <html>
     <head>
+        <base href="{{root_uri}}"><!--[if lte IE 6]></base><![endif]-->
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="res/css/bootstrap.css">
-        <link href="res/css/main.css" rel="stylesheet" type="text/css">
-        <link href="res/css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="public/assets/css/bootstrap.css">
+        <link href="public/assets/css/main.css" rel="stylesheet" type="text/css">
+        <link href="public/assets/css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
+        <link href="public/assets/css/bootstrap-tagsinput.css" rel="stylesheet" type="text/css">
     </head>
     <body>
         <div class="navbar navbar-default navbar-fixed-top">
@@ -17,12 +20,12 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand"><img height="20" alt="Brand" src="res/img/LOGO%20PAL%20INDONESIA.png"></a>
+                    <a href="{{root_path}}" class="navbar-brand"><img height="20" alt="Brand" src="public/assets/img/LOGO%20PAL%20INDONESIA.png"></a>
                 </div>
                 <div class="collapse navbar-collapse" id="navbar-ex-collapse">
-                    <ul class="nav navbar-nav navbar-right" style="width:20%;">
+                    <ul class="nav navbar-nav navbar-right" >
                         <li style="padding-top:10px;">
-                            <img src="res/img/profile/no-photo.png" width="30" height="30">
+                            <img src="public/image/profile/{{users.image}}" width="30" height="30">
                         </li>
                         <li class="active">
                             <a href="#">Akun</a>
@@ -31,7 +34,7 @@
                             <a href="#">Logout</a>
                         </li>
                     </ul>
-                    <form class="navbar-form" role="search">
+                    <form class="navbar-form" method="post" action="search">
                         <div class="form-group" style="display: inline-table;width:70%;">
                             <div class="input-group" style="width:100%;">
                                 <input type="text" class="form-control no-radius" placeholder="Pencarian Kartu Nama">
@@ -47,60 +50,60 @@
         <div class="section first">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <div class="section thick"  data-spy="affix" data-offset-top="50">
                             <div class="box box-sidebar hidden-sm hidden-xs row" >
                                 <div class="col-xs-12  text-center" style="background-color: #f7f7f7; padding-top:20px;">
-                                    <img src="res/img/profile/no-photo.png" style="max-width:50%;width:50%;height:auto;">                                    
+                                    <img src="public/image/profile/{{users.image}}" style="max-width:50%;width:50%;height:auto;">
                                     <h3>Supper Admin</h3>
                                     <h5><strong>Administrator</strong></h5>
                                 </div>
                                 <hr>
-                                <div class="col-sm-12">
-                                    <ul class="list-group">
-                                        <li class="list-group-item ">
+                                <div class="col-sm-12"  style="padding: 5px">
+                                    <div class="list-group">
+                                        <a href="{{root_path}}" class="list-group-item ">
                                             <span class="badge">14</span>
                                             Kartu Nama
-                                        </li>
-                                        <li class="list-group-item">
+                                        </a>
+                                        <a href="userlist" class="list-group-item ">
                                             <span class="badge">2</span>
                                             Pengguna
-                                        </li>
-                                        <li class="list-group-item active">
+                                        </a>
+                                        <a href="memberlist" class="list-group-item active">
                                             <span class="badge">1</span>
                                             Grup
-                                        </li>
-                                        <li class="list-group-item">
+                                        </a>
+                                        <a class="list-group-item">
                                             <span class="badge">1</span>
                                             Pesan
-                                        </li>
-                                        <li class="list-group-item"  role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                        </a>
+                                        <a class="list-group-item"  role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                                             <span class="badge"></span>
                                             Pengaturan
-                                        </li>
-                                        <ul class="list-group collapse" id="collapseExample">
-                                            <li class="list-group-item">
+                                        </a>
+                                        <div class="list-group collapse" id="collapseExample">
+                                            <a href="setting/registration" class="list-group-item">
                                                 Pengaturan Pendaftaran
-                                            </li>
-                                            <li class="list-group-item">
+                                            </a>
+                                            <a class="list-group-item">
                                                 Pengaturan Email
-                                            </li>
-                                            <li class="list-group-item">
+                                            </a>
+                                            <a class="list-group-item">
                                                 Pengaturan SMTP
-                                            </li>
-                                            <li class="list-group-item">
+                                            </a>
+                                            <a class="list-group-item">
                                                 Bantuan
-                                            </li>
-                                            <li class="list-group-item">
+                                            </a>
+                                            <a class="list-group-item">
                                                 Tentang Aplikasi
-                                            </li>
-                                        </ul>
-                                    </ul>
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-9">
+                    <div class="col-md-10">
                         <div class="section thick">
                             <div class="row box box-cards">
                                 <div class="col-md-6">
@@ -129,69 +132,36 @@
                                             <th>Nama Grup</th>
                                             <th>Jumlah Pengguna</th>
                                             <th>Jumlah Kartu Nama</th>
-                                            <th class="text-right">Tindakan</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        {{# grouplist}}
                                         <tr>
                                             <td>1</td>
-                                            <td>Grup 1</td>
-                                            <td>2 Pengguna</td>
-                                            <td>28 Kartu Nama</td>
-                                            <td class="text-right">
-                                                <a class="btn btn-primary btn-xs">Moderasi</a>
-                                                <a class="btn btn-danger btn-xs">Hapus</a>
-                                            </td>
+                                            <td><b>{{data.group_name}}</b></td>
+                                            <td><b>{{count_users}}</b> Pengguna</td>
+                                            <td><b>{{count_cards}}</b> Kartu Nama</td>
                                         </tr>
+                                        {{/ grouplist}}
                                     </tbody>
                                 </table>
-                            </div>
-                        </div>
-                        <div class="section">
-                            <hr style="margin-bottom:5px;">
-                            <div class="row">
-                                <div style="float:left;">
-                                    <span style="padding-left:10px;">Daftar Pengguna <strong>1</strong> - <strong>10</strong> dari <strong>200</strong> </span>
-                                </div>
-                                <div style="float:right;">
-                                    <ul class="pagination no-margin-top">
-                                        <li>
-                                            <a href="#" class="no-radius">Prev</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">1</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">2</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">3</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">4</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">5</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="no-radius">Next</a>
-                                        </li>
-                                    </ul>
-                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        
+        </div>
+
         <!--[if lt IE 9]>
-        <script type="text/javascript" src="res/js/html5shiv.js"></script>
-        <script src="res/js/respond.js"></script>
+        <script type="text/javascript" src="public/assets/js/html5shiv.js"></script>
+        <script src="public/assets/js/respond.js"></script>
         <![endif]-->
-        <script type="text/javascript" src="res/js/jquery.min.js"></script>
-        <script type="text/javascript" src="res/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="res/js/mustache.min.js"></script>
+        <script type="text/javascript" src="public/assets/js/jquery.min.js"></script>
+        <script type="text/javascript" src="public/assets/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="public/assets/js/mustache.min.js"></script>
+        <script type="text/javascript" src="public/assets/js/typeahead.bundle.js"></script>
+        <script type="text/javascript" src="public/assets/js/list.min.js"></script>
         <script>
             $(function() {
                 var $affixElement = $('div[data-spy="affix"]');

@@ -10,25 +10,25 @@
     display: none;
 }
 .form-group input[type="checkbox"] + .btn-group > label span:last-child {
-    display: inline-block;   
+    display: inline-block;
 }
 
 .form-group input[type="checkbox"]:checked + .btn-group > label span:first-child {
     display: inline-block;
 }
 .form-group input[type="checkbox"]:checked + .btn-group > label span:last-child {
-    display: none;   
+    display: none;
 }
 
 .material-switch > input[type="checkbox"] {
-    display: none;   
+    display: none;
 }
 
 .material-switch > label {
     cursor: pointer;
     height: 0px;
-    position: relative; 
-    width: 40px;  
+    position: relative;
+    width: 40px;
 }
 
 .material-switch > label::before {
@@ -95,13 +95,13 @@
 .row.box-header{
     background: #f7f7f7;
     border-left: 4px solid #2ab4c2;
-    
+
 }
 .row.box-sidebar{
     background: #f7f7f7;
     border-left: 4px solid #2ab4c2;
     margin-right: 5px;
-    
+
 }
 .row.box-header > div > div > ul > li {
 	background: none;

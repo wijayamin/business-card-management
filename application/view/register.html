@@ -1,12 +1,14 @@
+<!DOCTYPE html>
 <html>
     <head>
+        <base href="{{root_uri}}"><!--[if lte IE 6]></base><![endif]-->
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        
-        <link rel="stylesheet" href="res/css/bootstrap.css">
-        <link href="res/css/main.css" rel="stylesheet" type="text/css">
-        <link href="res/css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="public/assets/css/bootstrap.css">
+        <link href="public/assets/css/main.css" rel="stylesheet" type="text/css">
+        <link href="public/assets/css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
+        <link href="public/assets/css/bootstrap-tagsinput.css" rel="stylesheet" type="text/css">
     </head>
     <body>
         <div class="navbar navbar-default navbar-fixed-top">
@@ -19,7 +21,7 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand">
-                        <img height="20" alt="Brand" src="res\img\LOGO PAL INDONESIA.png">
+                        <img height="20" alt="Brand" src="public/assets/img/LOGO%20PAL%20INDONESIA.png">
                     </a>
                 </div>
                 <div class="collapse navbar-collapse" id="navbar-ex-collapse">
@@ -39,15 +41,16 @@
                         <h5 class="text-center">Selamat datang di Aplikasi Manajemen Kartu Nama.</h5>
                         <h5 class="text-center">Silahkan isi seluruh informasi di bawah ini</h5>
                         <hr>
-                        <form class="form-horizontal" role="form">
+                        <form class="form-horizontal" method="post" action="doregister">
                             <div class="form-group has-feedback">
                                 <div class="col-sm-2">
                                     <label for="inputEmail3" class="control-label">Username</label>
                                 </div>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="inputEmail3" placeholder="Username atau Email"></div>
+                                    <input type="text" class="form-control lvalid exvalid-username" data-min="6" name="username" placeholder="Username" required>
+                                </div>
                                 <div class="col-sm-offset-2 col-sm-10">
-                                    <p class="help-block"><small>#</small></p>
+                                    <p class="help-block text-{{username.type}}"><small>{{username.message}}</small></p>
                                 </div>
                             </div>
                             <div class="form-group has-feedback">
@@ -55,9 +58,13 @@
                                     <label for="inputEmail3" class="control-label">Email</label>
                                 </div>
                                 <div class="col-sm-10">
-                                    <input type="email" class="form-control" id="inputEmail3" placeholder="Email"></div>
+                                    <input type="email" class="form-control exvalid-email" name="email" placeholder="Email" value="{{ready_email}}" {{# ready_email}} readonly {{/ ready_email}} required>
+                                    {{# ready_group}}
+                                    <input type="hidden" class="form-control exvalid-email" name="group_id" placeholder="Email" value="{{ready_group}}">
+                                    {{/ ready_group}}
+                                </div>
                                 <div class="col-sm-offset-2 col-sm-10">
-                                    <p class="help-block"><small>#</small></p>
+                                    <p class="help-block text-{{email.type}}"><small>{{email.message}}</small></p>
                                 </div>
                             </div>
                             <div class="form-group has-feedback">
@@ -65,9 +72,9 @@
                                     <label for="inputEmail3" class="control-label">Password</label>
                                 </div>
                                 <div class="col-sm-10">
-                                    <input type="password" class="form-control" id="inputEmail3" placeholder="password"></div>
+                                    <input type="password" class="form-control lvalid exvalid-password" data-min="6" name="password" placeholder="password" required></div>
                                 <div class="col-sm-offset-2 col-sm-10">
-                                    <p class="help-block"><small>Minimal 6 Karakter</small></p>
+                                    <p class="help-block text-{{password.type}}"><small>{{password.message}}</small></p>
                                 </div>
                             </div>
                             <div class="form-group has-feedback">
@@ -75,9 +82,9 @@
                                     <label for="inputEmail3" class="control-label">Ulang Password</label>
                                 </div>
                                 <div class="col-sm-10">
-                                    <input type="password" class="form-control" id="inputEmail3" placeholder="password"></div>
+                                    <input type="password" class="form-control exvalid-repassword" data-min="6" name="repassword" placeholder="password" required></div>
                                 <div class="col-sm-offset-2 col-sm-10">
-                                    <p class="help-block"><small>Minimal 6 Karakter</small></p>
+                                    <p class="help-block text-{{repassword.type}}"><small>{{repassword.message}}</small></p>
                                 </div>
                             </div>
                             <div class="form-group has-feedback">
@@ -85,7 +92,7 @@
                                     <label for="inputEmail3" class="control-label">Nama Lengkap</label>
                                 </div>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="inputEmail3" placeholder="Nama Lengkap"></div>
+                                    <input type="text" class="form-control" id="nane" name="name" placeholder="Nama Lengkap" required></div>
                                 <div class="col-sm-offset-2 col-sm-10">
                                     <p class="help-block"><small>Mohon untuk menggunakan nama asli</small></p>
                                 </div>
@@ -104,14 +111,24 @@
                                     <button type="submit" class="btn btn-block btn-primary">Daftar</button>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-8 text-center">
+                                    <small class="text-muted">Sudah Punya Akun ?</small>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-8">
+                                    <a href="{{root}}page/login" class="btn btn-block btn-success">Login</a>
+                                </div>
+                            </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-        <footer class="hidden-sm hidden-xs section section-primary" style="background-color: #f8f8f8; border-width: 4px 1px 0 1px; border-color: #e7e7e7; margin-top:10px;"> 
+        <footer class="hidden-sm hidden-xs section section-primary" style="background-color: #f8f8f8; border-width: 4px 1px 0 1px; border-color: #e7e7e7; margin-top:10px;">
             <div class="container">
-                <div class="row"> 
+                <div class="row">
                     <div class="col-sm-6">
                         <h2>Aplikasi Manajemen Kartu Nama</h2>
                         <p>
@@ -127,7 +144,7 @@
                             <a href="#"><i class="fa fa-3x fa-fw fa-instagram text-inverse"></i></a>
                             <a href="#"><i class="fa fa-3x fa-fw fa-twitter text-inverse"></i></a>
                             <a href="#"><i class="fa fa-3x fa-fw fa-facebook text-inverse"></i></a>
-                            <a href="#"><i class="fa fa-3x fa-fw fa-github text-inverse"></i></a> 
+                            <a href="#"><i class="fa fa-3x fa-fw fa-github text-inverse"></i></a>
                         </div></div><div class="row"> <div class="col-md-12 hidden-xs text-right">
                         <a href="#"><i class="fa fa-3x fa-fw fa-instagram text-inverse"></i></a>
                         <a href="#"><i class="fa fa-3x fa-fw fa-twitter text-inverse"></i></a>
@@ -139,13 +156,74 @@
                 </div>
             </div>
         </footer>
-        
         <!--[if lt IE 9]>
-        <script type="text/javascript" src="res/js/html5shiv.js"></script>
-        <script src="res/js/respond.js"></script>
+        <script type="text/javascript" src="public/assets/js/html5shiv.js"></script>
+        <script src="public/assets/js/respond.js"></script>
         <![endif]-->
-        <script type="text/javascript" src="res/js/jquery.min.js"></script>
-        <script type="text/javascript" src="res/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="res/js/mustache.min.js"></script>   
+        <script type="text/javascript" src="public/assets/js/jquery.min.js"></script>
+        <script type="text/javascript" src="public/assets/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="public/assets/js/mustache.min.js"></script>
+        {{=<% %>=}}
+        <script id="validation" type="x-tmpl-mustache">
+            <p class="help-block text-{{type}}"><small>{{message}}</small></p>
+        </script>
+        <%={{ }}=%>
+        <script>
+            $('.lvalid').on('keyup', function(){
+                var parent = $(this).parent();
+                var messaging = parent.next();
+                var value = $(this).val();
+                var vlength = $(this).val().length;
+                if(vlength < $(this).data('min') && vlength != 0){
+                    var validation = $('#validation').html();
+                    Mustache.parse(validation);   // optional, speeds up future uses
+                    var rendered = Mustache.render(validation, {type: "danger", message: "Minimal "+$(this).data('min')+" karakter" });
+                    messaging.html(rendered);
+                }else if(vlength >= $(this).data('min') && vlength != 0){
+                    messaging.html('');
+                }else{
+                    messaging.html('');
+                }
+            });
+            $('.exvalid-repassword').on('focusout', function(){
+                var parent = $(this).parent();
+                var messaging = parent.next();
+                var value = $(this).val();
+                var password = $('.exvalid-password').val();
+                if(value != password){
+                    var validation = $('#validation').html();
+                    Mustache.parse(validation);   // optional, speeds up future uses
+                    var rendered = Mustache.render(validation, {type: "danger", message: "Password tidak sama !!" });
+                    messaging.html(rendered);
+                }else{
+                    messaging.html('');
+                }
+            });
+            $('.exvalid-username').on('focusout',  function(){
+                var parent = $(this).parent();
+                var messaging = parent.next();
+                var value = $(this).val();
+                var vlength = $(this).val().length;
+                if(vlength >= $(this).data('min')){
+                    $.getJSON("check/username/"+value, {}, function(data){
+                        var validation = $('#validation').html();
+                        Mustache.parse(validation);   // optional, speeds up future uses
+                        var rendered = Mustache.render(validation,{type: data.type, message: data.message});
+                        messaging.html(rendered);
+                    });
+                }
+            });
+            $('.exvalid-email').on('focusout',   function(){
+                var parent = $(this).parent();
+                var messaging = parent.next();
+                var value = $(this).val();
+                $.getJSON("check/email/"+value, {}, function(data){
+                    var validation = $('#validation').html();
+                    Mustache.parse(validation);   // optional, speeds up future uses
+                    var rendered = Mustache.render(validation,{type: data.type, message: data.message});
+                    messaging.html(rendered);
+                });
+            });
+        </script>
     </body>
 </html>

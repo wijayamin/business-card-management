@@ -1,11 +1,13 @@
+<!DOCTYPE html>
 <html>
     <head>
+        <base href="{{root_uri}}"><!--[if lte IE 6]></base><![endif]-->
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="res/css/bootstrap.css">
-        <link href="res/css/main.css" rel="stylesheet" type="text/css">
-        <link href="res/css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="public/assets/css/bootstrap.css">
+        <link href="public/assets/css/main.css" rel="stylesheet" type="text/css">
+        <link href="public/assets/css/materialdesignicons.min.css" rel="stylesheet" type="text/css">
     </head>
     <body>
         <div class="navbar navbar-default navbar-fixed-top">
@@ -17,90 +19,92 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand"><img height="20" alt="Brand" src="res/img/LOGO%20PAL%20INDONESIA.png"></a>
+                    <a href="{{root_path}}" class="navbar-brand"><img height="20" alt="Brand" src="public/assets/img/LOGO%20PAL%20INDONESIA.png"></a>
                 </div>
                 <div class="collapse navbar-collapse" id="navbar-ex-collapse">
-                    <ul class="nav navbar-nav navbar-right" style="width:20%;">
+                    <ul class="nav navbar-nav navbar-right">
                         <li style="padding-top:10px;">
-                            <img src="res/img/profile/no-photo.png" width="30" height="30">
+                            <img src="public/image/profile/{{users.image}}" width="30" height="30">
                         </li>
                         <li class="active">
-                            <a href="#">Akun</a>
+                            <a href="account">Akun</a>
                         </li>
                         <li>
-                            <a href="#">Logout</a>
+                            <a href="logout">Logout</a>
                         </li>
                     </ul>
-                    <form class="navbar-form" role="search">
+                    <div class="navbar-form" role="search">
                         <div class="form-group" style="display: inline-table;width:70%;">
                             <div class="input-group" style="width:100%;">
-                                <input type="text" class="form-control no-radius" placeholder="Pencarian Kartu Nama">
+                                <input type="text" class="form-control no-radius" name="name" placeholder="Pencarian Kartu Nama">
                                 <span class="input-group-addon top-bars btn-default" style="padding:0;">
                                     <input type="submit" class="btn btn-xs btn-link" id="inputEmail3" value="Cari" style="width:100%;margin:0; color:#000;">
                                 </span>
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="section first">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-2" style="{{# privilege.is_read}}display:none{{/ privilege.is_read}}{{# privilege.is_write}}display:none{{/ privilege.is_write}}{{# privilege.is_admin}}display:block{{/ privilege.is_admin}}{{# privilege.is_superuser}}display:block{{/ privilege.is_superuser}}">
+                        <!--[if (gte IE 9)|!(IE)]><!-->
                         <div class="section thick"  data-spy="affix" data-offset-top="50">
-                            <div class="box box-sidebar hidden-sm hidden-xs row" >
+                        <!--<![endif]-->
+                        <!--[if lt IE 9]>
+                        <div class="section thick">
+                        <![endif]-->
+                            <div class="box box-sidebar hidden-sm hidden-xs row">
                                 <div class="col-xs-12  text-center" style="background-color: #f7f7f7; padding-top:20px;">
-                                    <img src="res/img/profile/no-photo.png" style="max-width:50%;width:50%;height:auto;">                                    
-                                    <h3>Supper Admin</h3>
-                                    <h5><strong>Administrator</strong></h5>
+                                    <img src="public/image/profile/no-photo.png" style="max-width:50%;width:50%;height:auto;">
+                                    <h3>{{users.real_name}}</h3>
+                                    <h5><strong>{{users.permission}}</strong></h5>
                                 </div>
                                 <hr>
-                                <div class="col-sm-12">
-                                    <ul class="list-group">
-                                        <li class="list-group-item ">
-                                            <span class="badge">14</span>
+                                <div class="col-sm-12" style="padding: 5px">
+                                    <div class="list-group">
+                                        <a href="{{root_path}}" class="list-group-item active">
+                                            <span class="badge">{{counter.cards}}</span>
                                             Kartu Nama
-                                        </li>
-                                        <li class="list-group-item">
-                                            <span class="badge">2</span>
+                                        </a>
+                                        <a href="userlist" class="list-group-item ">
+                                            <span class="badge">{{counter.users}}</span>
                                             Pengguna
-                                        </li>
-                                        <li class="list-group-item">
-                                            <span class="badge">1</span>
+                                        </a>
+                                        <a href="{{root_path}}" class="list-group-item ">
+                                            <span class="badge">{{counter.groups}}</span>
                                             Grup
-                                        </li>
-                                        <li class="list-group-item">
+                                        </a>
+                                        <a href="{{root_path}}" class="list-group-item ">
                                             <span class="badge">1</span>
                                             Pesan
-                                        </li>
-                                        <li class="list-group-item active"  role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="true" aria-controls="collapseExample">
-                                            <span class="badge"></span>
+                                        </a>
+                                        <a class="list-group-item"  role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                            <span class="badge"><i class=" mdi mdi-settings"></i></span>
                                             Pengaturan
-                                        </li>
-                                        <ul class="list-group collapse in" id="collapseExample">
-                                            <li class="list-group-item active">
-                                                Pengaturan Pendaftaran
-                                            </li>
-                                            <li class="list-group-item">
-                                                Pengaturan Email
-                                            </li>
-                                            <li class="list-group-item">
-                                                Pengaturan SMTP
-                                            </li>
-                                            <li class="list-group-item">
+                                        </a>
+                                        <div class="list-group collapse" id="collapseExample">
+                                            <a href="setting/registration" class="list-group-item " style="background:#f5f5f5">
+                                                Pendaftaran
+                                            </a>
+                                            <a href="" class="list-group-item " style="background:#f5f5f5">
+                                                Email
+                                            </a>
+                                            <a href="{{root_path}}" class="list-group-item " style="background:#f5f5f5">
+                                                SMTP
+                                            </a>
+                                            <a href="{{root_path}}" class="list-group-item " style="background:#f5f5f5">
                                                 Bantuan
-                                            </li>
-                                            <li class="list-group-item">
-                                                Tentang Aplikasi
-                                            </li>
-                                        </ul>
-                                    </ul>
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-9">
+                    <div class="{{# privilege.is_superuser}}col-md-10{{/ privilege.is_superuser}}{{# privilege.is_admin}}col-md-10{{/ privilege.is_admin}}{{# privilege.is_read}}col-md-12{{/ privilege.is_read}}{{# privilege.is_write}}col-md-12{{/ privilege.is_write}}">
                         <div class="section thick">
                             <div class="row box box-cards">
                                 <div class="col-md-8">
@@ -119,11 +123,12 @@
                                                     <h5 class="text-muted">Tidak Diijinkan</h5>
                                                 </div>
                                             </div>
+                                            <br>
                                             <div class="form-group text-muted">
                                                 <label for="inputEmail" class="col-lg-4 control-label">Pendaftaran Mandiri</label>
                                                 <div class="col-lg-1">
                                                     <div class="material-switch">
-                                                        <input id="switch2" name="someSwitchOption001" type="checkbox" disabled/>
+                                                        <input id="switch2" name="someSwitchOption001" type="checkbox"/>
                                                         <label for="switch2" class="label-primary"></label>
                                                     </div>
                                                 </div>
@@ -135,7 +140,7 @@
                                                 <label for="inputEmail" class="col-lg-4 control-label">Batasi Email Pendaftar</label>
                                                 <div class="col-lg-1">
                                                     <div class="material-switch">
-                                                        <input id="switch2" name="someSwitchOption001" type="checkbox" disabled/>
+                                                        <input id="switch2" name="someSwitchOption001" type="checkbox"/>
                                                         <label for="switch2" class="label-primary"></label>
                                                     </div>
                                                 </div>
@@ -146,7 +151,7 @@
                                             <div class="form-group  text-muted">
                                                 <label for="inputEmail" class="col-lg-4 control-label">Batasan Domain Email</label>
                                                 <div class="col-lg-8">
-                                                    <input type="text" class="form-control" disabled>
+                                                    <input type="text" class="form-control">
                                                 </div>
                                                 <div class="col-md-8 col-md-offset-4">
                                                     <small>Batasan Domain Email Pendaftar</small>
@@ -184,14 +189,14 @@
                 </div>
             </div>
         </div>
-        
+
         <!--[if lt IE 9]>
-        <script type="text/javascript" src="res/js/html5shiv.js"></script>
-        <script src="res/js/respond.js"></script>
+        <script type="text/javascript" src="public/assets/js/html5shiv.js"></script>
+        <script src="public/assets/js/respond.js"></script>
         <![endif]-->
-        <script type="text/javascript" src="res/js/jquery.min.js"></script>
-        <script type="text/javascript" src="res/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="res/js/mustache.min.js"></script>
+        <script type="text/javascript" src="public/assets/js/jquery.min.js"></script>
+        <script type="text/javascript" src="public/assets/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="public/assets/js/mustache.min.js"></script>
         <script>
             $(function() {
                 var $affixElement = $('div[data-spy="affix"]');
