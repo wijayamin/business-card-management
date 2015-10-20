@@ -5,4 +5,4 @@ php:
 - 5.3
 - hhvm
 - DB=mysql
-script: phpunit Test.php
+script: phpunit --configuration phpunit_$DB.xml --coverage-text
