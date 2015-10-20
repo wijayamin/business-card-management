@@ -9,6 +9,7 @@ $app->get('/asu', function () use ($use) {
     };
 
     echo $lele();
+    echo $lele();
 
 });
 ?>
