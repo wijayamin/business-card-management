@@ -33,5 +33,5 @@ Password Super Admin : **Admin**
 * Slim Framework (PHP Framework)
 * Mustache PHP (PHP Templating Engine)
 * Mustache.js (Javascript Templating Engine)
-* PHPMailer (PHP Mailer Engine)
+* PHPMailer (PHP email Engine)
 
