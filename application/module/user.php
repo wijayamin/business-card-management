@@ -52,7 +52,7 @@ $app->post('/invite', function() use ($use){
                     Undangan dikirim oleh <b>".$name."</b> <br>
                     Silahkan gunakan tombol dibawah ini untuk melanjutkan registrasi",
         "url"=>$url,
-        "url_name"=>"Aktivasi Sekarang"
+        "url_name"=>"Registrasi Sekarang"
     ));
     if(!$use->mail->send()) {
         $result["status"]='failed';
