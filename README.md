@@ -19,6 +19,8 @@ Password Super Admin : **Admin**
     $database["username"]="root"; // Username Akses MySQL
     $database["password"]=""; // Password Akses MySQL
 ```
+## Versi 0.2.1.a
+* Penggatian server email sementara ke google untuk uji coba
 
 ## Versi 0.2
 * penambahan halaman admin
