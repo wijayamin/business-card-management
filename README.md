@@ -12,11 +12,13 @@ Password Super Admin : **Admin**
 * Buat database MySQL Baru Dengan Nama **kartu_nama** atau dengan nama terserah
 * Import File **kartu_nama.sql**
 * edit file **config.php** dan edit kode seperti dibawah dan ganti sesuai kebutuhan
-    -    `$database["host"]='localhost'; // Ganti dengan alamat server mysql (contoh : Localhost)`
-    -    `$database["port"]="3306"; // Port Server MySQL (contoh : 3306)`
-    -    `$database["name"]="kartu_nama"; // Nama Database yang digunakan`
-    -    `$database["username"]="root"; // Username Akses MySQL`
-    -    `$database["password"]=""; // Password Akses MySQL`
+```
+    $database["host"]='localhost'; // Ganti dengan alamat server mysql (contoh : Localhost)
+    $database["port"]="3306"; // Port Server MySQL (contoh : 3306)
+    $database["name"]="kartu_nama"; // Nama Database yang digunakan
+    $database["username"]="root"; // Username Akses MySQL
+    $database["password"]=""; // Password Akses MySQL
+```
 
 ## Versi 0.2
 * penambahan halaman admin
