@@ -10,7 +10,7 @@ Password Super Admin : **Admin**
 
 **Koneksi Database**
 * Buat database MySQL Baru Dengan Nama **kartu_nama** atau dengan nama terserah
-* Import File **kartunama.sql**
+* Import File **kartu_nama.sql**
 * edit file **config.php** dan edit kode seperti dibawah dan ganti sesuai kebutuhan
     -    `$database["host"]='localhost'; // Ganti dengan alamat server mysql (contoh : Localhost)`
     -    `$database["port"]="3306"; // Port Server MySQL (contoh : 3306)`
