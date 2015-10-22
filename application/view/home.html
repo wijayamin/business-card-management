@@ -227,7 +227,8 @@
                                             <a class="pull-left" style="display: block; cursor: pointer;" data-img="{{card_image}}" data-type="{{# is_pdf}}pdf{{/ is_pdf}}{{# is_image}}image{{/ is_image}}" data-toggle="modal" data-target="#preview">
                                                 {{# is_pdf}}
                                                 <!--[if (gte IE 9)|!(IE)]><!-->
-                                                <object type="application/pdf" data="public/data/{{card_image}}" width="200" height="130" style="pointer-events: none;" ></object>
+<!--                                                <object type="application/pdf" data="public/data/{{card_image}}" width="200" height="130" style="pointer-events: none;" ></object>-->
+                                                <canvas class="pdf-thumb" id="pdf-{{card_id}}" data-pdf="public/data/{{card_image}}" width="200" height="130"></canvas>
                                                 <!--<![endif]-->
                                                 <!--[if lt IE 9]>
                                                 <embed width="100%" height="150" src="public/data/{{card_image}}"></embed>
@@ -362,6 +363,7 @@
         <script type="text/javascript" src="public/assets/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="public/assets/js/mustache.min.js"></script>
         <script type="text/javascript" src="public/assets/js/bootstrap3-typeahead.min.js"></script>
+        <script type="text/javascript" src="public/assets/js/pdf.js"></script>
         {{=<% %>=}}
         <script id="template-tabs" type="x-tmpl-mustache">
             {{# list4 }}
@@ -433,7 +435,7 @@
             </div>
         </script>
         <%={{ }}=%>
-        <script>
+            <script>
             $(function() {
                 var $affixElement = $('div[data-spy="affix"]');
                 $affixElement.width($affixElement.parent().width());
@@ -449,18 +451,32 @@
                 if(type == "pdf"){
                     modal.find('.modal-body').html(
                         '<!--[if (gte IE 9)|!(IE)]><!-->'+
-                        '<object type="application/pdf" data="public/data/'+img+'" width="100%" height="500"></object>'+
+                        '<center><canvas id="pdf-modal" width="500" height="500"></canvas></center>'+
                         '<!--<![endif]-->'+
                         '<!--[if lt IE 9]>'+
                         '<embed width="100%" height="500" src="public/data/'+img+'"></embed>'+
                         '<![endif]-->'
                     )
+                    PDFJS.getDocument('public/data/'+img).then(function(pdfFile) {
+                        var pageNumber = 1;
+                        pdfFile.getPage(pageNumber).then(function(a) {
+                            var canvas = document.getElementById('pdf-modal');
+                            var viewport = a.getViewport(canvas.width / a.getViewport(1.0).width);
+                            var context = canvas.getContext('2d');
+                            canvas.height = viewport.height;
+                            var renderContext = {
+                                canvasContext: context,
+                                viewport: viewport
+                            };
+                            a.render(renderContext);
+                        });
+                    });
                 }else{
                     modal.find('.modal-body').html('<img src="public/data/'+img+'" width="100%">')
                 }
             })
-        </script>
-        <script>
+            </script>
+            <script>
             $(document).ready(function(){
                 getDetailList('{{url.company-list}}', 1);
                 $('.tabbers').on('click', function(){
@@ -494,6 +510,32 @@
                     $('.tab-area').html(rendered);
                 });
             }
-        </script>
+            </script>
+            <script>
+                $('.pdf-thumb').each(function(index){
+                    var pdf = $(this).data('pdf');
+                    var ext = pdf.split('.').pop().toLowerCase();
+                    var selector = $(this).attr('id');
+                    if($.inArray(ext, ['pdf']) != -1) {
+                        PDFJS.getDocument(pdf).then(function(pdfFile) {
+                            var pageNumber = 1;
+                            pdfFile.getPage(pageNumber).then(function(a) {
+                                var canvas = document.getElementById(selector);
+                                var viewport = a.getViewport(canvas.width / a.getViewport(1.0).width);
+                                var context = canvas.getContext('2d');
+                                canvas.height = viewport.height;
+                                var renderContext = {
+                                    canvasContext: context,
+                                    viewport: viewport
+                                };
+                                a.render(renderContext);
+                            });
+                        });
+                    }else if($.inArray(ext, ['gif','png','jpg','jpeg']) != -1){
+                        var selector_parent = $(this).parent();
+                        $(selector_parent).html('<img width="100%" src="data/'+pdf+'">');
+                    }
+                });
+            </script>
     </body>
 </html>
