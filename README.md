@@ -19,10 +19,13 @@ Password Super Admin : **Admin**
     $database["username"]="root"; // Username Akses MySQL
     $database["password"]=""; // Password Akses MySQL
 ```
-## Versi 0.2.1.a
+### Versi 0.2.2.a
+* perubahan penampilan pdf menggunakan [PDF.js](https://mozilla.github.io/pdf.js/)
+
+### Versi 0.2.1.a
 * Penggatian server email sementara ke google untuk uji coba
 
-## Versi 0.2
+### Versi 0.2
 * penambahan halaman admin
 * undang pengguna baru via email
 * support file PDF dan Image
