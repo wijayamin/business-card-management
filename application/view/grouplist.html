@@ -50,52 +50,54 @@
         <div class="section first">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-2">
+                    <div class="col-md-2" style="{{# privilege.is_read}}display:none{{/ privilege.is_read}}{{# privilege.is_write}}display:none{{/ privilege.is_write}}{{# privilege.is_admin}}display:block{{/ privilege.is_admin}}{{# privilege.is_superuser}}display:block{{/ privilege.is_superuser}}">
+                        <!--[if (gte IE 9)|!(IE)]><!-->
                         <div class="section thick"  data-spy="affix" data-offset-top="50">
+                            <!--<![endif]-->
+                            <!--[if lt IE 9]>
+                            <div class="section thick">
+                            <![endif]-->
                             <div class="box box-sidebar hidden-sm hidden-xs row" >
                                 <div class="col-xs-12  text-center" style="background-color: #f7f7f7; padding-top:20px;">
-                                    <img src="public/image/profile/{{users.image}}" style="max-width:50%;width:50%;height:auto;">
-                                    <h3>Supper Admin</h3>
-                                    <h5><strong>Administrator</strong></h5>
+                                    <img src="public/image/profile/no-photo.png" style="max-width:50%;width:50%;height:auto;">
+                                    <h3>{{users.real_name}}</h3>
+                                    <h5><strong>{{users.permission}}</strong></h5>
                                 </div>
                                 <hr>
-                                <div class="col-sm-12"  style="padding: 5px">
+                                <div class="col-sm-12" style="padding: 5px">
                                     <div class="list-group">
                                         <a href="{{root_path}}" class="list-group-item ">
-                                            <span class="badge">14</span>
+                                            <span class="badge">{{counter.cards}}</span>
                                             Kartu Nama
                                         </a>
                                         <a href="userlist" class="list-group-item ">
-                                            <span class="badge">2</span>
+                                            <span class="badge">{{counter.users}}</span>
                                             Pengguna
                                         </a>
-                                        <a href="memberlist" class="list-group-item active">
-                                            <span class="badge">1</span>
+                                        <a href="grouplist" class="list-group-item active">
+                                            <span class="badge">{{counter.groups}}</span>
                                             Grup
                                         </a>
-                                        <a class="list-group-item">
+                                        <a href="{{root_path}}" class="list-group-item ">
                                             <span class="badge">1</span>
                                             Pesan
                                         </a>
                                         <a class="list-group-item"  role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                                            <span class="badge"></span>
+                                            <span class="badge"><i class=" mdi mdi-settings"></i></span>
                                             Pengaturan
                                         </a>
                                         <div class="list-group collapse" id="collapseExample">
-                                            <a href="setting/registration" class="list-group-item">
-                                                Pengaturan Pendaftaran
+                                            <a href="setting/registration" class="list-group-item " style="background:#f5f5f5">
+                                                Pendaftaran
                                             </a>
-                                            <a class="list-group-item">
-                                                Pengaturan Email
+                                            <a href="" class="list-group-item " style="background:#f5f5f5">
+                                                Email
                                             </a>
-                                            <a class="list-group-item">
-                                                Pengaturan SMTP
+                                            <a href="{{root_path}}" class="list-group-item " style="background:#f5f5f5">
+                                                SMTP
                                             </a>
-                                            <a class="list-group-item">
+                                            <a href="{{root_path}}" class="list-group-item " style="background:#f5f5f5">
                                                 Bantuan
-                                            </a>
-                                            <a class="list-group-item">
-                                                Tentang Aplikasi
                                             </a>
                                         </div>
                                     </div>

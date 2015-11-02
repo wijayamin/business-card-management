@@ -37,7 +37,7 @@
                     <form class="navbar-form" method="post" action="search">
                         <div class="form-group" style="display: inline-table;width:70%;">
                             <div class="input-group" style="width:100%;">
-                                <input type="text" class="form-control no-radius" placeholder="Pencarian Kartu Nama">
+                                <input type="text" class="form-control no-radius" name="name" placeholder="Pencarian Kartu Nama">
                                 <span class="input-group-addon top-bars btn-default" style="padding:0;">
                                     <input type="submit" class="btn btn-xs btn-link" id="inputEmail3" value="Cari" style="width:100%;margin:0; color:#000;">
                                 </span>
@@ -50,52 +50,54 @@
         <div class="section first">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-2">
+                    <div class="col-md-2" style="{{# privilege.is_read}}display:none{{/ privilege.is_read}}{{# privilege.is_write}}display:none{{/ privilege.is_write}}{{# privilege.is_admin}}display:block{{/ privilege.is_admin}}{{# privilege.is_superuser}}display:block{{/ privilege.is_superuser}}">
+                        <!--[if (gte IE 9)|!(IE)]><!-->
                         <div class="section thick"  data-spy="affix" data-offset-top="50">
+                            <!--<![endif]-->
+                            <!--[if lt IE 9]>
+                            <div class="section thick">
+                            <![endif]-->
                             <div class="box box-sidebar hidden-sm hidden-xs row" >
                                 <div class="col-xs-12  text-center" style="background-color: #f7f7f7; padding-top:20px;">
-                                    <img src="public/image/profile/{{users.image}}" style="max-width:50%;width:50%;height:auto;">
-                                    <h3>Supper Admin</h3>
-                                    <h5><strong>Administrator</strong></h5>
+                                    <img src="public/image/profile/no-photo.png" style="max-width:50%;width:50%;height:auto;">
+                                    <h3>{{users.real_name}}</h3>
+                                    <h5><strong>{{users.permission}}</strong></h5>
                                 </div>
                                 <hr>
-                                <div class="col-sm-12"  style="padding: 5px">
+                                <div class="col-sm-12" style="padding: 5px">
                                     <div class="list-group">
                                         <a href="{{root_path}}" class="list-group-item ">
-                                            <span class="badge">14</span>
+                                            <span class="badge">{{counter.cards}}</span>
                                             Kartu Nama
                                         </a>
                                         <a href="userlist" class="list-group-item active">
-                                            <span class="badge">2</span>
+                                            <span class="badge">{{counter.users}}</span>
                                             Pengguna
                                         </a>
-                                        <a href="grouplist" class="list-group-item">
-                                            <span class="badge">1</span>
+                                        <a href="grouplist" class="list-group-item ">
+                                            <span class="badge">{{counter.groups}}</span>
                                             Grup
                                         </a>
-                                        <a class="list-group-item">
+                                        <a href="{{root_path}}" class="list-group-item ">
                                             <span class="badge">1</span>
                                             Pesan
                                         </a>
                                         <a class="list-group-item"  role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                                            <span class="badge"></span>
+                                            <span class="badge"><i class=" mdi mdi-settings"></i></span>
                                             Pengaturan
                                         </a>
                                         <div class="list-group collapse" id="collapseExample">
-                                            <a href="setting/registration" class="list-group-item">
-                                                Pengaturan Pendaftaran
+                                            <a href="setting/registration" class="list-group-item " style="background:#f5f5f5">
+                                                Pendaftaran
                                             </a>
-                                            <a class="list-group-item">
-                                                Pengaturan Email
+                                            <a href="" class="list-group-item " style="background:#f5f5f5">
+                                                Email
                                             </a>
-                                            <a class="list-group-item">
-                                                Pengaturan SMTP
+                                            <a href="{{root_path}}" class="list-group-item " style="background:#f5f5f5">
+                                                SMTP
                                             </a>
-                                            <a class="list-group-item">
+                                            <a href="{{root_path}}" class="list-group-item " style="background:#f5f5f5">
                                                 Bantuan
-                                            </a>
-                                            <a class="list-group-item">
-                                                Tentang Aplikasi
                                             </a>
                                         </div>
                                     </div>
@@ -108,19 +110,31 @@
                             <div class="row box box-cards">
                                 <div class="col-md-6">
                                     <div class="btn-group btn-group-sm btn-short-by">
-                                        <a class="btn btn-primary"role="button" data-toggle="modal" data-target="#undang">Undang Pengguna Baru</a>
+                                        <a class="btn btn-primary"role="button" data-toggle="modal" data-target="#undang">Tambah Pengguna</a>
                                     </div>
                                     <div class="btn-group btn-group-sm btn-short-by" style="">
                                         <a class="btn btn-default dropdown-toggle" data-toggle="dropdown"> Urutkan <span class="mdi mdi-chevron-down"></span></a>
                                         <ul class="dropdown-menu" role="menu">
                                             <li>
-                                                <a class="sort" data-sort="name">Nama</a>
+                                                <a class="sort" data-sort="name" style="cursor: pointer;">Nama</a>
+                                            </li>
+                                            <li>
+                                                <a class="sort" data-sort="username" style="cursor: pointer;">Username</a>
+                                            </li>
+                                            <li>
+                                                <a class="sort" data-sort="email" style="cursor: pointer;">Email</a>
+                                            </li>
+                                            <li>
+                                                <a class="sort" data-sort="group" style="cursor: pointer;">Grup</a>
+                                            </li>
+                                            <li>
+                                                <a class="sort" data-sort="permission" style="cursor: pointer;">Permission</a>
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                            <input type="text" class="form-control no-radius search" placeholder="Pencarian Pengguna">
+                                    <input type="text" class="form-control no-radius search" placeholder="Pencarian Pengguna">
                                 </div>
                             </div>
                         </div>
@@ -136,19 +150,19 @@
                                 <table class="table table-striped table-hover">
                                     <thead>
                                         <tr class="info">
-                                            <th>#</th>
-                                            <th colspan="2">Nama Pengguna</th>
-                                            <th>Username</th>
-                                            <th>Email</th>
-                                            <th>Group</th>
-                                            <th>Permission</th>
+                                            <th><a data-sort="username" class="sort" style="cursor: pointer;">#</a></th>
+                                            <th colspan="2" ><a class="sort" data-sort="name" style="cursor: pointer;">Nama</a></th>
+                                            <th><a class="sort" data-sort="username" style="cursor: pointer;">Username</a></th>
+                                            <th> <a class="sort" data-sort="email" style="cursor: pointer;">Email</a></th>
+                                            <th><a class="sort" data-sort="group" style="cursor: pointer;">Grup</a></th>
+                                            <th> <a class="sort" data-sort="permission" style="cursor: pointer;">Permission</a></th>
                                             <th class="text-right">Tindakan</th>
                                         </tr>
                                     </thead>
                                     <tbody class="list">
                                         {{# userlist}}
                                         <tr class="{{# is_active}}text-muted{{/ is_active}}">
-                                            <td>{{user_id}}</td>
+                                            <td class="nomor">{{id}}</td>
                                             <td><img src="public/image/profile/{{image}}" width="25" height="25"></td>
                                             <td class="name">{{real_name}}</td>
                                             <td class="username">{{username}}</td>
@@ -156,7 +170,7 @@
                                             <td class="group">{{group_name}}</td>
                                             <td class="permission">{{permission}}</td>
                                             <td class="text-right">
-                                                <a role="button"  data-toggle="modal" data-target="#moderasi" data-id="{{user_id}}" data-permission="{{permission}}" data-name="{{real_name}}" class="btn btn-primary btn-xs">Moderasi</a>
+                                                <a role="button"  data-toggle="modal" data-target="#moderasi" data-id="{{user_id}}" data-permission="{{permission}}" data-name="{{real_name}}" data-username="{{username}}" class="btn btn-primary btn-xs">Moderasi</a>
                                             </td>
                                         </tr>
                                         {{/ userlist}}
@@ -169,45 +183,123 @@
                 </div>
             </div>
         </div>
+
         <div class="modal fade" id="undang" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <form method="post" action="invite">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="myModalLabel">Undang Pengguna Baru</h4>
-                        </div>
-                        <div class="modal-body">
-                            <div class="form-horizontal">
-                                <fieldset>
-                                    <div class="form-group">
-                                        <label for="inputEmail" class="col-lg-2 control-label">Email</label>
-                                        <div class="col-lg-10">
-                                            <input type="text" class="form-control" name="email" placeholder="Email">
-                                            <input type="hidden" class="form-control" name="name" value="{{users.real_name}}">
-                                        </div>
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <ul class="nav nav-pills" role="tablist">
+                            <li role="presentation" class="active"><a href="#invite" aria-controls="home" role="tab" data-toggle="tab">Undang Via Email</a></li>
+                            <li role="presentation"><a href="#generate" aria-controls="profile" role="tab" data-toggle="tab">Buat Manual</a></li>
+                        </ul>
+                    </div>
+                    <div class="modal-body">
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="invite">
+                                <form method="post" action="invite">
+                                    <div class="form-horizontal">
+                                        <fieldset>
+                                            <div class="form-group">
+                                                <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+                                                <div class="col-lg-10">
+                                                    <input type="text" class="form-control" name="email" placeholder="Email">
+                                                    <input type="hidden" class="form-control" name="name" value="{{users.real_name}}">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputEmail" class="col-lg-2 control-label">Grup</label>
+                                                <div class="col-lg-10">
+                                                    <select class="form-control" name="group">
+                                                        {{# group_list}}
+                                                        <option value="{{group_id}}">{{group_name}}</option>
+                                                        {{/ group_list}}
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </fieldset>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="inputEmail" class="col-lg-2 control-label">Grup</label>
-                                        <div class="col-lg-10">
-                                            <select class="form-control" name="group">
-                                                {{# group_list}}
-                                                <option value="{{group_id}}">{{group_name}}</option>
-                                                {{/ group_list}}
-                                            </select>
-                                        </div>
+                                    <hr>
+                                    <div>
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+                                        <button type="submit" class="btn btn-primary pull-right">Undang</button>
                                     </div>
-                                </fieldset>
+                                </form>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="generate">
+                                <form method="post" action="generate" id="gen-user">
+                                    <div class="form-horizontal">
+                                        <fieldset>
+                                            <div class="form-group">
+                                                <label for="inputEmail" class="col-lg-2 control-label">Username</label>
+                                                <div class="col-lg-10">
+                                                    <input type="text" class="form-control lvalid exvalid-username" data-min="6" name="username" placeholder="Username" required>
+                                                    <input type="hidden" class="form-control" name="name" value="{{users.real_name}}">
+                                                </div>
+                                                <div class="col-sm-offset-2 col-sm-10">
+                                                    <p class="help-block text-{{username.type}}"><small>{{username.message}}</small></p>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputEmail" class="col-lg-2 control-label">Password</label>
+                                                <div class="input-group col-lg-10 " style="padding-left: 15px; padding-right: 15px;">
+                                                    <input type="password" class="form-control lvalid exvalid-password" data-min="6" name="password" placeholder="Password" id="password" onmouseover="viewPass(this);" onmouseout="hidePass(this);" onfocus="viewPass(this);" onblur="hidePass(this);" required>
+                                                    <span class="input-group-btn">
+                                                        <button class="btn btn-default" type="button" onclick="genPass();">Buat Password</button>
+                                                    </span>
+                                                </div>
+                                                <div class="col-sm-offset-2 col-sm-10">
+                                                    <p class="help-block text-{{password.type}}"><small>{{password.message}}</small></p>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputEmail" class="col-lg-2 control-label">Permission</label>
+                                                <div class="col-lg-10">
+                                                    <select class="form-control" name="permission">
+                                                        <option value="read">Readonly</option>
+                                                        <option value="write">Readwrite</option>
+                                                        <option value="admin">Admin</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputEmail" class="col-lg-2 control-label">Grup</label>
+                                                <div class="col-lg-10">
+                                                    {{# group_list}}
+                                                    <div class="col-lg-4 text-center">
+                                                        <div class="[ form-group ]" style="margin-top:5px; float:left;">
+                                                            <!--[if lt IE 9]>
+                                                            <input type="checkbox" name="card_id" value="{{card_id}}" />
+                                                            <![endif]-->
+                                                            <!--[if (gte IE 9)|!(IE)]><!-->
+                                                            <input type="checkbox" name="group_id[]" id="fancy-checkbox-primary{{group_id}}" value="{{group_id}}" required />
+                                                            <div class="[ btn-group btn-group-xs ]">
+                                                                <label for="fancy-checkbox-primary{{group_id}}" class="[ btn btn-default ]">
+                                                                    <span class="text-success">&#91; {{group_name}} &#93;</span>
+                                                                    <span>{{group_name}}</span>
+                                                                </label>
+                                                                <!--<![endif]-->
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    {{/ group_list}}
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                    <hr>
+                                    <div>
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+                                        <button type="submit" id="submit-create" class="btn btn-primary pull-right">Simpan</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-                            <button type="submit" class="btn btn-primary">Undang</button>
-                        </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
+
         <div class="modal fade" id="moderasi" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -261,6 +353,27 @@
                 </div>
             </div>
         </div>
+        <div class="modal fade" id="gen-user-after" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Pembuatan User Baru</h4>
+                    </div>
+                    <div class="modal-body">
+                        {{# user-print}}
+                        <p>Pembuatan user dengan username <strong>{{username}}</strong> berhasil!</p>
+                        <p>Silahkan gunakan tombol cetak untuk mencetak identitas login user</p>
+                        {{/ user-print}}
+                    </div>
+                    <div class="modal-footer">
+                        <a href="userlist" type="button" class="btn btn-default" data-dismiss="modal">Close</a>
+                        <a href="print/genuser/{{# user-print}}{{username}}{{/ user-print}}" target="_blank" type="button" class="btn btn-primary">Cetak</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
         <!--[if lt IE 9]>
         <script type="text/javascript" src="public/assets/js/html5shiv.js"></script>
@@ -271,6 +384,12 @@
         <script type="text/javascript" src="public/assets/js/mustache.min.js"></script>
         <script type="text/javascript" src="public/assets/js/typeahead.bundle.js"></script>
         <script type="text/javascript" src="public/assets/js/list.min.js"></script>
+
+        {{=<% %>=}}
+        <script id="validation" type="x-tmpl-mustache">
+            <p class="help-block text-{{type}}"><small>{{message}}</small></p>
+        </script>
+        <%={{ }}=%>
         <script>
             $(function() {
                 var $affixElement = $('div[data-spy="affix"]');
@@ -284,18 +403,87 @@
         </script>
         <script>
             $('#moderasi').on('show.bs.modal', function (event) {
-              var button = $(event.relatedTarget) // Button that triggered the modal
-              var user_id = button.data('id') // Extract info from data-* attributes
-              var permission = button.data('permission') // Extract info from data-* attributes
-              var name = button.data('name') // Extract info from data-* attributes
-              // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-              // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-              var modal = $(this)
-              modal.find('#name').val(name)
-              modal.find('#id').val(user_id)
-              modal.find('#permission').val(permission)
-              modal.find('#remove').attr('href', 'removeaccount/'+user_id)
+                $(window).keydown(function(event){
+                    if(event.keyCode == 13) {
+                        event.preventDefault();
+                        return false;
+                    }
+                });
+                var button = $(event.relatedTarget) // Button that triggered the modal
+                var user_id = button.data('id') // Extract info from data-* attributes
+                var permission = button.data('permission') // Extract info from data-* attributes
+                var name = button.data('name') // Extract info from data-* attributes
+                var username = button.data('username') // Extract info from data-* attributes
+                // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+                // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+                var modal = $(this)
+                modal.find('#name').val(username)
+                modal.find('#id').val(user_id)
+                modal.find('#permission').val(permission)
+                modal.find('#remove').attr('href', 'removeaccount/'+user_id)
             })
         </script>
+        <script>
+            function genPass(){
+                $('#password').val(Math.random().toString(36).slice(-6));
+            }
+            function viewPass(selector){
+                $(selector).attr('type', 'text');
+            }
+            function hidePass(selector){
+                $(selector).attr('type', 'password');
+            }
+        </script>
+        <script>
+            $('.lvalid').on('keyup', function(){
+                var parent = $(this).parent();
+                var messaging = parent.next();
+                var value = $(this).val();
+                var vlength = $(this).val().length;
+                if(vlength < $(this).data('min') && vlength != 0){
+                    var validation = $('#validation').html();
+                    Mustache.parse(validation);   // optional, speeds up future uses
+                    var rendered = Mustache.render(validation, {type: "danger", message: "Minimal "+$(this).data('min')+" karakter" });
+                    messaging.html(rendered);
+                    localStorage.setItem('gen-valid', false);
+                }else if(vlength >= $(this).data('min') && vlength != 0){
+                    messaging.html('');
+                    localStorage.setItem('gen-valid', true);
+                }else{
+                    messaging.html('');
+                    localStorage.setItem('gen-valid', true);
+                }
+            });
+            $('.exvalid-username').on('focusout',  function(){
+                var parent = $(this).parent();
+                var messaging = parent.next();
+                var value = $(this).val();
+                var vlength = $(this).val().length;
+                if(vlength >= $(this).data('min')){
+                    $.getJSON("check/username/"+value, {}, function(data){
+                        var validation = $('#validation').html();
+                        Mustache.parse(validation);   // optional, speeds up future uses
+                        var rendered = Mustache.render(validation,{type: data.type, message: data.message});
+                        localStorage.setItem('gen-user-valid', data.status);
+                        messaging.html(rendered);
+                    });
+                }
+            });
+            $('#gen-user').on('submit', function(e){
+                if(localStorage.getItem('gen-valid') == 'true' && localStorage.getItem('gen-user-valid') == 'true'){
+                    return true;
+                }else{
+                    e.preventDefault();
+                    alert('Terdapat kesalahan pada form penambahan akun secara manual, mohon untuk mengecek ulang');
+                }
+            });
+        </script>
+        {{# do-print}}
+        <script>
+            $(document).ready(function(){
+                $('#gen-user-after').modal('show');
+            });
+        </script>
+        {{/ do-print}}
     </body>
 </html>

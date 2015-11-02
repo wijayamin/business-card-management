@@ -5,6 +5,12 @@ $app->get('/grouplist', function () use ($use) {
     $data_group = (object) ["result"=>[]];
     $use->app->applyHook('grouplist', $data_group);
     $use->template->param("grouplist", $data_group->result);
+
+    $use->template->param("counter", array(
+        "cards"=>$use->db->query("select count(card_id) from cards")->fetchColumn(),
+        "users"=>$use->db->query("select count(user_id) from users")->fetchColumn(),
+        "groups"=>$use->db->query("select count(group_id) from groups")->fetchColumn(),
+    ));
     $use->template->execute();
 })->name("grouplist");
 

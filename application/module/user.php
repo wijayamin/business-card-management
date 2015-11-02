@@ -1,5 +1,5 @@
 <?php
-$app->get('/userlist', function () use ($use) {
+$app->get('/userlist(/:print(/:user_id))', function ($print = false, $user_id=0) use ($use) {
     $use->template->prepare('memberlist.html');
     $use->template->param("users", $use->users);
     $data_user = (object) ["result"=>[]];
@@ -11,6 +11,10 @@ $app->get('/userlist', function () use ($use) {
         "users"=>$use->db->query("select count(user_id) from users")->fetchColumn(),
         "groups"=>$use->db->query("select count(group_id) from groups")->fetchColumn(),
     ));
+    if($print != false){
+        $use->template->param("do-print", true);
+        $use->template->param("user-print", $use->db->query("select * from users where user_id='".$user_id."'")->fetchAll(PDO::FETCH_ASSOC));
+    }
     $use->template->execute();
 
 })->name("userlist");
@@ -24,7 +28,9 @@ $app->hook('userlist', function ($param) use ($use){
             users u
     ");
     $result = array();
+    $id = 1;
     foreach($select as $row){
+        $re["id"]=$id;
         $re["user_id"]=$row["user_id"];
         $re["username"]=$row["username"];
         $re["real_name"]=$row["real_name"];
@@ -34,6 +40,7 @@ $app->hook('userlist', function ($param) use ($use){
         $re["is_active"]=$row["is_active"];
         $re["group_name"]=$use->db->query("select GROUP_CONCAT(g.group_name SEPARATOR ', ') from users_groups ug, groups g where ug.user_id='".$row["user_id"]."' and ug.group_id=g.group_id group by ug.user_id")->fetchColumn();
         array_push($result, $re);
+        $id++;
     }
     $param->result=$result;
 });
@@ -62,6 +69,29 @@ $app->post('/invite', function() use ($use){
         $use->app->redirect($use->app->urlFor('userlist'));
     }
 });
+
+$app->post('/generate', function() use ($use){
+    $username = $use->app->request->post('username');
+    $name = $use->app->request->post('name');
+    $password = $use->app->request->post('password');
+    $permission = $use->app->request->post('permission');
+    $group = $use->app->request->post('group_id');
+    $insert = $use->db->prepare(
+        "insert into users(username, password, image, activated, permission) values (:username, :password, 'no-photo.png', '1', :permission)"
+    );
+    $insert->bindParam(':username', $username, PDO::PARAM_STR);
+    $insert->bindParam(':password', md5($password), PDO::PARAM_STR);
+    $insert->bindParam(':permission', $permission, PDO::PARAM_STR);
+    if($insert->execute()){
+        $user_id = $use->db->lastInsertId();
+        foreach($group as $group_id){
+            $use->db->query("insert into users_groups(user_id, group_id) values('".$user_id."', '".$group_id."')");
+        }
+        $use->app->redirect($use->app->urlFor('userlist', array('print'=>true, 'user_id'=>$user_id)));
+    }
+
+});
+
 $app->post('/moderation', function() use ($use){
     $name = $use->app->request->post('name');
     $id = $use->app->request->post('id');
@@ -69,9 +99,15 @@ $app->post('/moderation', function() use ($use){
     $use->db->query("update users set permission='".$permission."' where user_id='".$id."'");
     $use->app->redirect($use->app->urlFor('userlist'));
 });
+
 $app->get('/removeaccount/:user_id', function($user_id) use ($use){
     $use->db->query("delete from users_groups where user_id='".$user_id."'");
     $use->db->query("delete from users where user_id='".$user_id."'");
     $use->app->redirect($use->app->urlFor('userlist'));
 });
+
+$app->get('/print/genuser/:username', function($username) use ($use){
+    echo $username;
+});
+
 ?>
