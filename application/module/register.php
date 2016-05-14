@@ -27,6 +27,7 @@ $app->get('/register-invite/:email/:group_id(/:us(/:ps(:/reps)))', function ($em
     $use->template->param("ready_group", $group_id);
     $use->template->execute();
 })->name('register-invite');
+
 $app->get('/register(/:us(/:em(/:ps(:/reps))))', function ($us = false,$em = false,$ps = false,$reps = false) use ($use) {
     $use->template->prepare('register.html');
     $use->template->param(

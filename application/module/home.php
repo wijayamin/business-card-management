@@ -38,12 +38,12 @@ $app->get('/home(/:page(/:name(/:occupation(/:company(/:city(/:country(/:categor
 
     // url list
     $use->template->param("url", array(
-            "company-list"=>$use->app->urlFor('company-list', array("page"=>'')),
-            "occupation-list"=>$use->app->urlFor('occupation-list', array("page"=>'')),
-            "country-list"=>$use->app->urlFor('country-list', array("page"=>'')),
-            "category-list"=>$use->app->urlFor('category-list', array("page"=>'')),
-            "new"=>$use->app->urlFor('new'),
-//            "activation"=>$use->app->urlFor('doregsiter', array('resend'=>'true','user_id'=>$use->users["user_id"],'email'=>$use->users["email"])),
+        "company-list"=>$use->app->urlFor('company-list', array("page"=>'')),
+        "occupation-list"=>$use->app->urlFor('occupation-list', array("page"=>'')),
+        "country-list"=>$use->app->urlFor('country-list', array("page"=>'')),
+        "category-list"=>$use->app->urlFor('category-list', array("page"=>'')),
+        "new"=>$use->app->urlFor('new'),
+        // "activation"=>$use->app->urlFor('doregsiter', array('resend'=>'true','user_id'=>$use->users["user_id"],'email'=>$use->users["email"])),
     ));
 
     // check if account is activated
@@ -54,13 +54,13 @@ $app->get('/home(/:page(/:name(/:occupation(/:company(/:city(/:country(/:categor
     }
     // parameter list
     $use->template->param("parameter",array(
-            "search"=>($name != '$' || $occupation != '$' || $company != '$' || $city != '$' || $country != '$' || $category != '$' ? true : false),
-            "name"=>($name != '$' ? $name : false),
-            "occupation"=>($occupation != '$' ? $occupation : false),
-            "company"=>($company != '$' ? $company : false),
-            "city"=>($city != '$' ? $city : false),
-            "country"=>($country != '$' ? $country : false),
-            "category"=>($category != '$' ? $category : false)
+        "search"=>($name != '$' || $occupation != '$' || $company != '$' || $city != '$' || $country != '$' || $category != '$' ? true : false),
+        "name"=>($name != '$' ? $name : false),
+        "occupation"=>($occupation != '$' ? $occupation : false),
+        "company"=>($company != '$' ? $company : false),
+        "city"=>($city != '$' ? $city : false),
+        "country"=>($country != '$' ? $country : false),
+        "category"=>($category != '$' ? $category : false)
     ));
 
     $use->template->param("counter", array(

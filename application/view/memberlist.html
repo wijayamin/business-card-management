@@ -170,7 +170,7 @@
                                             <td class="group">{{group_name}}</td>
                                             <td class="permission">{{permission}}</td>
                                             <td class="text-right">
-                                                <a role="button"  data-toggle="modal" data-target="#moderasi" data-id="{{user_id}}" data-permission="{{permission}}" data-name="{{real_name}}" data-username="{{username}}" class="btn btn-primary btn-xs">Moderasi</a>
+                                                <a role="button"  data-toggle="modal" data-target="#moderasi" data-id="{{user_id}}" data-permission="{{permission}}" data-name="{{real_name}}" data-username="{{username}}" data-group="{{group_name}}" class="btn btn-primary btn-xs">Moderasi</a>
                                             </td>
                                         </tr>
                                         {{/ userlist}}
@@ -329,18 +329,30 @@
                                             </select>
                                         </div>
                                     </div>
-<!--
+
                                     <div class="form-group">
                                         <label for="inputEmail" class="col-lg-2 control-label">Grup</label>
                                         <div class="col-lg-10">
-                                            <select class="form-control" name="group">
-                                                {{# group_list}}
-                                                <option value="{{group_id}}">{{group_name}}</option>
-                                                {{/ group_list}}
-                                            </select>
+                                            {{# group_list}}
+                                            <div class="col-lg-4 text-center">
+                                                <div class="[ form-group ]" style="margin-top:5px; float:left;">
+                                                    <!--[if lt IE 9]>
+                                                    <input type="checkbox" name="card_id" value="{{card_id}}" />
+                                                    <![endif]-->
+                                                    <!--[if (gte IE 9)|!(IE)]><!-->
+                                                    <input type="checkbox" name="group_id[]" id="fancy-checkbox1-primary{{group_id}}" value="{{group_id}}" required />
+                                                    <div class="[ btn-group btn-group-xs ]">
+                                                        <label for="fancy-checkbox1-primary{{group_id}}" class="[ btn btn-default ]">
+                                                            <span class="text-success">&#91; {{group_name}} &#93;</span>
+                                                            <span>{{group_name}}</span>
+                                                        </label>
+                                                        <!--<![endif]-->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {{/ group_list}}
                                         </div>
                                     </div>
--->
                                 </fieldset>
                             </div>
                         </div>
@@ -414,6 +426,7 @@
                 var permission = button.data('permission') // Extract info from data-* attributes
                 var name = button.data('name') // Extract info from data-* attributes
                 var username = button.data('username') // Extract info from data-* attributes
+                var group = button.data('group')
                 // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
                 // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
                 var modal = $(this)
@@ -421,6 +434,10 @@
                 modal.find('#id').val(user_id)
                 modal.find('#permission').val(permission)
                 modal.find('#remove').attr('href', 'removeaccount/'+user_id)
+                var groups = group.split(',');
+                groups.forEach(function(){
+
+                });
             })
         </script>
         <script>
