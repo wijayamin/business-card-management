@@ -2,8 +2,6 @@ Aplikasi-Kartu-Nama
 ===================
 Aplikasi Kartu Nama Untuk PT. PAL Indonesia
 
-Progress 85%
-
 ##### Penggunaan Aplikasi
 Username Super Admin : **Admin**
 Password Super Admin : **Admin**
